@@ -4,11 +4,13 @@ import { HomepageRoutingModule, routesComponents } from './homepage-routing.modu
 import { PermissionsComponent } from './permissions/permissions.component';
 import {MenuComponent} from "../../common/menu/menu.component";
 import {HeaderComponent} from "../../common/header/header.component";
+import {PermissionsModule} from "./permissions/permissions.module";
 
 @NgModule({
   imports: [
     CommonModule,
-    HomepageRoutingModule
+    HomepageRoutingModule,
+    PermissionsModule
   ],
   declarations: [routesComponents, MenuComponent, HeaderComponent],
   exports: [routesComponents, MenuComponent, HeaderComponent]
