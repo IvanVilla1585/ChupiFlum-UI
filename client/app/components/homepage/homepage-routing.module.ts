@@ -9,7 +9,7 @@ const routes: Routes = [
     component: HomepageComponent,
     children: [
       {
-        path: 'permissions',
+        path: 'permisos',
         component: PermissionsComponent
       }
     ]
