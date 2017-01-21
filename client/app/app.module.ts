@@ -5,7 +5,8 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import {ComonModule} from "./common/common.module";
+import { HomepageModule } from './components/homepage/homepage.module'
+import {LoginModule} from "./components/login/login.module";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {ComonModule} from "./common/common.module";
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    ComonModule
+    LoginModule,
+    HomepageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
