@@ -1,11 +1,27 @@
-import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PermissionsComponent } from './permissions.component';
+import { RolesComponent } from './roles/roles/roles.component';
+import { TablerolesComponent } from './roles/tableroles/tableroles.component';
 
-const routes: Routes = [];
+export const routesPermissions: Routes = [
+  {
+    path: 'permisos',
+    component: PermissionsComponent,
+    children: [
+      {
+        path: 'roles',
+        component: RolesComponent
+      },
+      {
+        path: 'tablaroles',
+        component: TablerolesComponent
+      }
+    ]
+  }
+];
 
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-  providers: []
-})
-export class PermissionsRoutingModule { }
+export const routesPermissionsComponents = [
+  PermissionsComponent,
+  RolesComponent,
+  TablerolesComponent
+];
