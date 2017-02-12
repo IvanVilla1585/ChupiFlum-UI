@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PermissionsRoutingModule } from './permissions-routing.module';
 import { PermissionsComponent } from './permissions.component';
+import { UserComponent } from './user/user/user.component';
+import { TableusersComponent } from './user/tableusers/tableusers.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    PermissionsRoutingModule
   ],
-  declarations: [PermissionsComponent]
+  declarations: []
 })
 export class PermissionsModule { }
