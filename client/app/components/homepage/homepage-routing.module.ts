@@ -4,6 +4,7 @@ import { HomepageComponent } from './homepage.component';
 import { PermissionsComponent } from './permissions/permissions.component';
 import { routesPermissions, routesPermissionsComponents } from './permissions/permissions-routing.module';
 import {routesShopping, routesShoppingComponents} from "./shopping/shopping-routing.module";
+import {routesProduction, routesProuctionComponents} from "./production/production-routing.module";
 
 const routes: Routes = [
   {
@@ -11,7 +12,8 @@ const routes: Routes = [
     component: HomepageComponent,
     children: [
       routesPermissions,
-      routesShopping
+      routesShopping,
+      routesProduction
     ]
   }
 ];
@@ -19,7 +21,8 @@ const routes: Routes = [
 export const routesComponents = [
   HomepageComponent,
   routesPermissionsComponents,
-  routesShoppingComponents
+  routesShoppingComponents,
+  routesProuctionComponents
 ];
 
 @NgModule({
