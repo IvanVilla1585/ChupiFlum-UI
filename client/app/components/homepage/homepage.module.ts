@@ -4,6 +4,8 @@ import { HomepageRoutingModule, routesComponents } from './homepage-routing.modu
 import {MenuComponent} from "../../common/menu/menu.component";
 import {HeaderComponent} from "../../common/header/header.component";
 import {PermissionsModule} from "./permissions/permissions.module";
+import { MachineComponent } from './production/machine/machine/machine.component';
+import { TablemachinesComponent } from './production/machine/tablemachines/tablemachines.component';
 
 @NgModule({
   imports: [
@@ -11,7 +13,7 @@ import {PermissionsModule} from "./permissions/permissions.module";
     HomepageRoutingModule,
     PermissionsModule
   ],
-  declarations: [routesComponents, MenuComponent, HeaderComponent],
+  declarations: [routesComponents, MenuComponent, HeaderComponent, MachineComponent, TablemachinesComponent],
   exports: [routesComponents, MenuComponent, HeaderComponent]
 })
 export class HomepageModule { }
