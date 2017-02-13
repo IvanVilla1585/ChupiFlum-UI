@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductComponent implements OnInit {
 
+  currentTab: String;
+
   constructor() { }
 
   ngOnInit() {
+    this.currentTab = 'product';
+  }
+
+  setCurrentTab (tab: String){
+    this.currentTab = tab;
   }
 
 }
