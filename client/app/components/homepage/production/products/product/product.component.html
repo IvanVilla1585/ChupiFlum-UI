@@ -1,0 +1,214 @@
+<div class="container-form-product">
+  <div class="layout-form-product">
+    <div class="title-form-product">
+      <h2>Registro Producto Terminado</h2>
+    </div>
+    <div class="container-tabs">
+      <div class="layout-tabs">
+        <div class="tab" [ngClass]="{'selected': currentTab === 'product'}" (click)="setCurrentTab('product')">
+          <span>Producto</span>
+        </div>
+        <div class="tab" [ngClass]="{'selected': currentTab === 'recipe'}" (click)="setCurrentTab('recipe')">
+          <span>Formula</span>
+        </div>
+        <div class="tab" [ngClass]="{'selected': currentTab === 'process'}" (click)="setCurrentTab('process')">
+          <span>Procesos de producción</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-product" [hidden]="currentTab != 'product'">
+      <form action="">
+        <div class="container-inputs">
+          <div class="layout-input">
+            <div class="container-input">
+              <label for="">
+                *Nombre
+                <input type="text">
+              </label>
+            </div>
+            <div class="container-input">
+              <label for="">
+                Descripción
+                <input type="text">
+              </label>
+            </div>
+          </div>
+          <div class="layout-input">
+            <div class="container-input">
+              <label for="unit-product">
+                *Unidad de Medida
+                <select name="unit-product" id="unit-product">
+                  <option value="">Seleccione una unidad</option>
+                </select>
+              </label>
+            </div>
+            <div class="container-input">
+              <label for="unit-product">
+                *Categoria
+                <select name="category" id="unit-product">
+                  <option value="">Seleccione una categoria</option>
+                </select>
+              </label>
+            </div>
+          </div>
+          <div class="layout-input">
+            <div class="container-input">
+              <label for="">
+                Cantidad en Inventario
+                <input type="text">
+              </label>
+            </div>
+            <div class="container-input">
+              <label for="">
+                *Stock
+                <input type="text">
+              </label>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="form-recipe" [hidden]="currentTab != 'recipe'">
+      <form action="">
+        <div class="container-inputs">
+          <div class="layout-input">
+            <div class="container-input">
+              <label for="">
+                *Presentación del Producto
+                <select name="presentation" id="presentation">
+                  <option value="">Seleccione una presentación</option>
+                </select>
+              </label>
+            </div>
+          </div>
+          <div class="layout-input">
+            <div class="container-input">
+              <label for="">
+                *Cantidad a Elaborar
+                <input type="text">
+              </label>
+            </div>
+            <div class="container-input">
+              <label for="">
+                *Costo Producción
+                <input type="text">
+              </label>
+            </div>
+            <div class="container-input">
+              <label for="">
+                *Precio Venta
+                <input type="text">
+              </label>
+            </div>
+          </div>
+          <div class="layout-input">
+            <div class="layout-table-recipe">
+              <div class="title-table">
+                <h3>Materia Prima</h3>
+              </div>
+              <div class="container-table">
+                <div class="head-table">
+                  <div class="title">
+                    <span>Producto</span>
+                  </div>
+                  <div class="title">
+                    <span>Unidad Medida</span>
+                  </div>
+                  <div class="title">
+                    <span>Cantidad</span>
+                  </div>
+                  <div class="actions">
+                    <span></span>
+                  </div>
+                </div>
+                <div class="body-table">
+                  <div class="layout-body">
+                    <div class="row-recipe">
+                      <div class="t-body raw-material">
+                        <div class="input">
+                          <input type="text" placeholder="Materia Prima">
+                        </div>
+                      </div>
+                      <div class="t-body unit-measure">
+                        <div class="input">
+                          <select name="unit" id="">
+                            <option value="">Seleccione una unidad</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="t-body quantity">
+                        <div class="input">
+                          <input type="text" placeholder="Cantidad">
+                        </div>
+                      </div>
+                      <div class="t-body actions">
+                        <figure class="container-icons">
+                          <img src="" alt="">
+                        </figure>
+                        <figure class="container-icons">
+                          <img src="" alt="">
+                        </figure>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="form-process" [hidden]="currentTab != 'process'">
+      <form action="">
+        <div class="container-inputs">
+          <div class="layout-input">
+            <div class="container-input">
+              <label for="">
+                Tiempo de Producción
+                <input type="text">
+              </label>
+            </div>
+          </div>
+          <div class="layout-select-process">
+            <div class="panel-left">
+              <div class="title-process">
+                <span>procesos por asignar</span>
+              </div>
+              <div class="process-unselected">
+                <div class="process">
+                  <span>Crear Usuarios</span>
+                </div>
+              </div>
+            </div>
+            <div class="panel-right">
+              <div class="title-process">
+                <span>procesos asignados</span>
+              </div>
+              <div class="process-selected">
+                <div class="process">
+                  <span>Crear Proveedor</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="container-buttons">
+      <div class="button">
+        G
+      </div>
+      <div class="button">
+        C
+      </div>
+      <div class="button">
+        E
+      </div>
+      <div class="button">
+        L
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -5,6 +5,8 @@ import { MachineComponent } from './machine/machine/machine.component';
 import { TablemachinesComponent } from './machine/tablemachines/tablemachines.component';
 import  { UnitmeasureComponent } from './unitmeasure/unitmeasure/unitmeasure.component';
 import  { TableunitmeasureComponent } from './unitmeasure/tableunitmeasure/tableunitmeasure.component';
+import { ProductComponent } from './products/product/product.component';
+import { TableproductsComponent } from './products/tableproducts/tableproducts.component';
 
 export const routesProduction = {
   path: 'produccion',
@@ -25,6 +27,14 @@ export const routesProduction = {
     {
       path: 'tablaunidadmedidas',
       component: TableunitmeasureComponent
+    },
+    {
+      path: 'productoterminado',
+      component: ProductComponent
+    },
+    {
+      path: 'tablaproductosterminados',
+      component: TableproductsComponent
     }
   ]
 };
@@ -34,6 +44,8 @@ export const routesProuctionComponents = [
   MachineComponent,
   UnitmeasureComponent,
   TablemachinesComponent,
-  TableunitmeasureComponent
+  TableunitmeasureComponent,
+  ProductComponent,
+  TableproductsComponent
 ];
 
