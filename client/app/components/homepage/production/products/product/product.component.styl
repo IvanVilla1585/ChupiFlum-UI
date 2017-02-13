@@ -42,6 +42,8 @@
     .form-product, .form-recipe, .form-process
       padding 2rem 3rem
       background $white
+      height 555px
+      max-height 555px
       form
         .container-inputs
           width percent(0.9)
@@ -68,7 +70,13 @@
                   width percent(1)
                 select
                   select-control()
-
+    .form-product
+      form
+        margin-top 5rem
+        .container-inputs
+          .layout-input
+            margin-top 1rem
+            margin-bottom 1rem
     .form-recipe
       form
         .container-inputs
@@ -76,7 +84,15 @@
             justify(space-around)
             &:first-child
               justify(space-between)
-              margin-left 30px
+              .container-input
+                width percent(0.576)
+                margin-left 5%
+            &:nth-child(2)
+              .container-input
+                width percent(0.25)
+                label
+                  input
+                    width 100%
             &:last-child
               .layout-table-recipe
                 width percent(1)
@@ -134,6 +150,7 @@
 
     .form-process
       form
+        margin-top 2rem
         .container-inputs
           .layout-select-process
             display-flex()
