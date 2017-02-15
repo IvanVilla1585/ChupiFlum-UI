@@ -7,6 +7,8 @@ import  { UnitmeasureComponent } from './unitmeasure/unitmeasure/unitmeasure.com
 import  { TableunitmeasureComponent } from './unitmeasure/tableunitmeasure/tableunitmeasure.component';
 import { ProductComponent } from './products/product/product.component';
 import { TableproductsComponent } from './products/tableproducts/tableproducts.component';
+import { ProcessComponent } from './process/process/process.component';
+import { TableprocessComponent } from './process/tableprocess/tableprocess.component';
 
 export const routesProduction = {
   path: 'produccion',
@@ -35,6 +37,14 @@ export const routesProduction = {
     {
       path: 'tablaproductosterminados',
       component: TableproductsComponent
+    },
+    {
+      path: 'procesos',
+      component: ProcessComponent
+    },
+    {
+      path: 'tablaprocesos',
+      component: TableprocessComponent
     }
   ]
 };
@@ -46,6 +56,8 @@ export const routesProuctionComponents = [
   TablemachinesComponent,
   TableunitmeasureComponent,
   ProductComponent,
-  TableproductsComponent
+  TableproductsComponent,
+  ProcessComponent,
+  TableprocessComponent
 ];
 
