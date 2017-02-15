@@ -134,9 +134,18 @@
                             select
                               select-control()
                         .actions
+                          display-flex()
+                          align-items(center)
+                          justify(space-around)
                           width percent(0.1)
                           .container-icons
                             margin 0
+                            width 15px
+                            height 15px
+                            cursor pointer
+                            img
+                              width percent(1)
+                              height percent(1)
             .container-input
               &:first-child
                 label

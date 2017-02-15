@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { ShoppingComponent } from './shopping.component';
 import { SupplierComponent } from './supplier/supplier/supplier.component';
 import { RawmaterialComponent } from './rawmaterial/rawmaterial/rawmaterial.component';
+import { OrderComponent } from './orders/order/order.component';
 
 export const routesShopping = {
   path: 'compras',
@@ -14,6 +15,10 @@ export const routesShopping = {
     {
       path: 'materiaprima',
       component: RawmaterialComponent
+    },
+    {
+      path: 'pedidos',
+      component: OrderComponent
     }
   ]
 };
@@ -21,5 +26,6 @@ export const routesShopping = {
 export const routesShoppingComponents = [
   ShoppingComponent,
   SupplierComponent,
-  RawmaterialComponent
+  RawmaterialComponent,
+  OrderComponent
 ];

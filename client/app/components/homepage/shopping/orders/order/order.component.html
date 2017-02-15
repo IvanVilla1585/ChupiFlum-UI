@@ -1,3 +1,126 @@
-<p>
-  order works!
-</p>
+<div class="container-form-order">
+  <div class="layout-form-order">
+    <div class="title-form-order">
+      <h2>Registro Producto Terminado</h2>
+    </div>
+    <div class="form-order">
+      <form action="">
+        <div class="container-inputs">
+          <div class="layout-input">
+            <div class="container-input">
+              <label for="date">
+                *Fecha Pedido
+                <input type="text" name="date" id="date">
+              </label>
+            </div>
+            <div class="container-input">
+              <label for="date">
+                *Proveedor
+                <input type="text" name="date" id="date">
+              </label>
+            </div>
+            <div class="container-input">
+              <label for="date">
+                *Dirección
+                <input type="text" name="date" id="date">
+              </label>
+            </div>
+          </div>
+          <div class="layout-input">
+            <div class="container-input">
+              <label for="">
+                *Cantidad a Elaborar
+                <input type="text">
+              </label>
+            </div>
+            <div class="container-input">
+              <label for="">
+                *Costo Producción
+                <input type="text">
+              </label>
+            </div>
+            <div class="container-input">
+              <label for="">
+                *Precio Venta
+                <input type="text">
+              </label>
+            </div>
+          </div>
+          <div class="layout-input">
+            <div class="layout-table-order">
+              <div class="container-table">
+                <div class="head-table">
+                  <div class="title">
+                    <span>Producto</span>
+                  </div>
+                  <div class="title">
+                    <span>Unidad Med.</span>
+                  </div>
+                  <div class="title">
+                    <span>Cantidad</span>
+                  </div>
+                  <div class="title">
+                    <span>Valor Unit.</span>
+                  </div>
+                  <div class="title actions">
+                    <span></span>
+                  </div>
+                </div>
+                <div class="body-table">
+                  <div class="layout-body" id="layout-body-order">
+                    <div class="row-order">
+                      <div class="t-body raw-material">
+                        <div class="input">
+                          <input type="text" placeholder="Materia Prima">
+                        </div>
+                      </div>
+                      <div class="t-body unit-measure">
+                        <div class="input">
+                          <select name="unit" id="">
+                            <option value="">Seleccione una unidad</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="t-body quantity">
+                        <div class="input">
+                          <input type="text" placeholder="Cantidad">
+                        </div>
+                      </div>
+                      <div class="t-body price">
+                        <div class="input">
+                          <input type="text" placeholder="Valor Unit.">
+                        </div>
+                      </div>
+                      <div class="t-body actions">
+                        <figure class="container-icons" (click)="addRow()">
+                          <img src="assets/images/icons/add_icon.png" alt="">
+                        </figure>
+                        <figure class="container-icons" (click)="deleteRow()">
+                          <img src="assets/images/icons/delete_icon.png" alt="">
+                        </figure>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="container-buttons">
+      <div class="button">
+        G
+      </div>
+      <div class="button">
+        C
+      </div>
+      <div class="button">
+        E
+      </div>
+      <div class="button">
+        L
+      </div>
+    </div>
+  </div>
+</div>
