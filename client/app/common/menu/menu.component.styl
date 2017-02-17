@@ -33,11 +33,25 @@
         .layout-text-menu
           padding 1rem 2rem
           border-bottom 1px solid $gray_ligth
+          position relative
 
           .text-menu
             width 100%
             text-decoration none
             color $gray_ligth
+          .content-img
+            margin 0
+            width 22px
+            height 22px
+            position absolute
+            top 15px
+            right 15px
+            img
+              width percent(1)
+            .img-activated
+              -ms-transform rotate(-270deg)
+              -webkit-transform rotate(-270deg)
+              transform rotate(-270deg)
 
         .layout-sub-menu
           background $gray
@@ -56,10 +70,9 @@
                 text-decoration none
                 color $gray_ligth
 
-        .inactive
+        .inactivated
           display none
 
-        .active
+        .activated
           display block
-          transition all 200ms
-          background red
+          transition 0.5s ease
