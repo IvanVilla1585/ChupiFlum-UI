@@ -2,17 +2,19 @@
 
 
 .container-homepage
-  height 100vh
+  display-flex()
+  flex-direction( column )
+  min-height 100vh
   .layout-homepage
     display-flex()
     align-items( stretch )
 
     .panel-left
-      width 20%
+      width percent(0.20)
       background $background_menu
 
     .panel-rigth
       display-flex()
       flex-direction( column )
-      width 80%
+      width percent(0.8)
       background $gray_ligth1
