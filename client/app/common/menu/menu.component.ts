@@ -63,8 +63,8 @@ export class MenuComponent implements OnInit {
             url: '/pedidos',
           },
           {
-            label: 'Kardex Pedidos',
-            url: '',
+            label: 'Entrada Pedidos',
+            url: '/entradamateriaprima',
           },
           {
             label: 'Materia Prima',
