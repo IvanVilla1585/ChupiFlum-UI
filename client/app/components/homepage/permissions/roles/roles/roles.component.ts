@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {RolesService} from "../../../../../services/roles/roles.service";
+import {Permission} from "../rol";
 
 @Component({
   selector: 'app-roles',
@@ -9,7 +10,7 @@ import {RolesService} from "../../../../../services/roles/roles.service";
 })
 export class RolesComponent implements OnInit {
 
-  permissions: any [];
+  permissions: Permission [];
   constructor(private rolesService: RolesService) {
     this.permissions = [];
   }
