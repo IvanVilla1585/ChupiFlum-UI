@@ -1,0 +1,78 @@
+@import "../../stylus/imports.variables.styl"
+
+
+.container-login
+  height 100vh
+  background-image url("/assets/images/fondo.jpg")
+  background-repeat no-repeat
+  background-size cover
+
+  .container-general
+    display-flex()
+    flex-direction()
+    justify(flex-end)
+    align-items(center)
+    width 100 vw
+    height 100vh
+    background rgba(206,206,206,0.5)
+
+    .layout-login
+      display-flex()
+      flex-direction(column)
+      width percent(0.3)
+      height percent(0.7)
+      background $white
+      padding 1.5rem 2.5rem
+      margin-right 5rem
+      position relative
+
+      .container-logo-login
+      .container-form-login
+        width percent(0.9)
+        margin 0 auto
+
+      .container-logo-login
+        figure
+          margin 0 auto
+          width percent(0.8)
+          img
+            width percent(1)
+
+      .container-form-login
+        margin-top 2rem
+
+        form
+          .layout-form-login
+            label
+              width 300px
+              display block
+              margin 15px  auto
+              color $gray1
+              font-size 15px
+
+              input
+                form-control(300, 35)
+                display block
+                margin-top 5.8px
+
+        .layout-buttons-login
+          .container-button
+            width 300px
+            margin 0 auto
+
+            .btn-default
+              border none
+              background $background_menu
+              color $white
+              width 150px
+              height 45px
+              border-radius 3px
+              cursor pointer
+
+      .container-reset-password
+        position absolute
+        text-align right
+        bottom 1rem
+        right 2rem
+        a
+          color $gray1

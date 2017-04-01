@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="6px" height="4px" viewBox="0 0 6 4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39 (31667) - http://www.bohemiancoding.com/sketch -->
+    <title>dropdown_icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="UI-guide" transform="translate(-1226.000000, -1413.000000)" fill="#656565">
+            <g id="COL" transform="translate(95.000000, -449.000000)">
+                <g id="DROpdown" transform="translate(733.000000, 1813.000000)">
+                    <polygon id="dropdown_icon" points="398 49 404 49 401 53"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

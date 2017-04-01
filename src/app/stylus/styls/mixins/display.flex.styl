@@ -1,0 +1,41 @@
+
+display-flex()
+  display -webkit-box
+  display -ms-flexbox
+  display -webkit-flex
+  display flex
+
+
+vertical-center()
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+
+
+flex-direction( direction = row )
+  -webkit-flex-direction: direction;
+  flex-direction: direction;
+
+
+flex( args... )
+  -webkit-box-flex args
+  -webkit-flex args
+  -ms-flex args
+  flex args
+
+align-items( direction )
+  -webkit-align-items direction
+  align-items direction
+
+flex-wrap( should_wrap = wrap )
+  -webkit-flex-wrap should_wrap
+  flex-wrap should_wrap
+
+align-self( direction = flex-start )
+  -webkit-align-self direction
+  align-self direction
+
+justify( orientation = flex-start )
+  -webkit-justify-content: orientation;
+  justify-content: orientation;
