@@ -4,19 +4,19 @@
       <h2>Registro Unidad de Medida</h2>
     </div>
     <div class="form-unitmeasure">
-      <form action="">
+      <form action="" [formGroup]="unitForm">
         <div class="container-inputs">
           <div class="layout-input">
             <div class="container-input">
               <label for="name">
                 *Nombre
-                <input type="text" [value]="name" (input)="name=$event.target.value" name="name" id="name">
+                <input type="text" formControlName="name" name="name" id="name" required>
               </label>
             </div>
             <div class="container-input">
               <label for="description">
                 Descripción
-                <input type="text" [value]="description" (input)="description=$event.target.value" name="description" id="description">
+                <input type="text" formControlName="description" name="description" id="description">
               </label>
             </div>
           </div>
@@ -24,13 +24,13 @@
             <div class="container-input">
               <label for="code">
                 *Código
-                <input type="text" [value]="code" (input)="code=$event.target.value" name="code" id="code">
+                <input type="text" formControlName="code" name="code" id="code" required>
               </label>
             </div>
             <div class="container-input">
               <label for="equivalence">
                 *Equivalencia
-                <input type="text" [value]="equivalence" (input)="equivalence=$event.target.value" name="equivalence" id="equivalence">
+                <input type="text" formControlName="equivalence" name="equivalence" id="equivalence" required>
               </label>
             </div>
           </div>
