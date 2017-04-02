@@ -1,0 +1,19 @@
+@import "../../stylus/imports.variables.styl"
+
+
+.container-general
+  background-repeat no-repeat
+  .layout-general
+    display-flex()
+    align-items( stretch )
+
+    .panel-left
+      width 20%
+      background $background_menu
+      height 100vh
+
+    .panel-rigth
+      display-flex()
+      flex-direction( column )
+      width 80%
+      background $gray_ligth1

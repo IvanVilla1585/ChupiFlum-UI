@@ -1,0 +1,28 @@
+<div class="layout-menu">
+  <div class="panel-logo">
+    <div class="container-logo">
+      <figure>
+        <img src="assets/images/logo.png" alt="">
+      </figure>
+    </div>
+    <div class="subtitle-logo">
+      <span>Refrescos Chupi Flum</span>
+    </div>
+  </div>
+  <nav class="panel-menu">
+    <ul class="general-menu">
+      <li class="item-menu" *ngFor="let menu of dataMenu; let i = $index" (click)="openSubMenu()">
+        <div class="layout-text-menu">
+          <a href="" class="text-menu">{{ menu.label }}</a>
+        </div>
+        <div class="layout-sub-menu inactive">
+          <ul class="sub-menu" >
+            <li class="item-sub-menu" *ngFor="let subMenu of menu.subMenu;">
+              <a href="" class="text-menu">{{ subMenu.label }}</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</div>

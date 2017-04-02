@@ -1,0 +1,65 @@
+@import "../../stylus/imports.variables.styl"
+
+.layout-menu
+  display-flex()
+  flex-direction( column )
+
+  .panel-logo
+    padding 2em 1em
+    background $gray_ligth1
+    border-right 1px solid $background_menu
+    .container-logo
+      margin 0 auto
+      width percent(0.8)
+      figure
+        margin 0
+        width percent(1)
+        img
+          width percent(1)
+
+    .subtitle-logo
+      text-align center
+
+  .panel-menu
+    padding-bottom 3rem
+    .general-menu
+      margin 0
+      padding 0
+      list-style none
+
+      .item-menu
+        cursor pointer
+
+        .layout-text-menu
+          padding 1rem 2rem
+          border-bottom 1px solid $gray_ligth
+
+          .text-menu
+            width 100%
+            text-decoration none
+            color $gray_ligth
+
+        .layout-sub-menu
+          background $gray
+          .sub-menu
+            margin 0
+            padding 0
+            list-style none
+
+            .item-sub-menu
+              cursor pointer
+              padding 1rem 2rem
+              border-bottom 1px solid $gray_ligth
+
+              .text-menu
+                width percent(1)
+                text-decoration none
+                color $gray_ligth
+
+        .inactive
+          display none
+
+        .active
+          display block
+          transition all 200ms
+          background red

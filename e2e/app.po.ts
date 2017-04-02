@@ -6,6 +6,7 @@ export class UIChupiFlumPage {
   }
 
   getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+    //noinspection TypeScriptUnresolvedFunction
+    return element(by.css('app h1')).getText();
   }
 }
