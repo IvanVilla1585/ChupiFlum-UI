@@ -12,7 +12,7 @@
   <nav class="panel-menu">
     <ul class="general-menu">
       <li class="item-menu" [hidden]="menu.subMenu.length > 0" *ngFor="let menu of dataMenu; let i = $index"
-          routerLink="{{menu.url}}" routerLinkActive="active">
+          >
         <div class="layout-text-menu">
           <span class="text-menu">{{ menu.label }}</span>
         </div>
@@ -27,7 +27,7 @@
         </div>
         <div id="{{menu.id}}" class="layout-sub-menu inactivated">
           <ul class="sub-menu" >
-            <li class="item-sub-menu" *ngFor="let subMenu of menu.subMenu;" routerLink="{{menu.url + subMenu.url}}" routerLinkActive="active">
+            <li class="item-sub-menu" *ngFor="let subMenu of menu.subMenu;" >
               <span class="text-menu">{{ subMenu.label }}</span>
             </li>
           </ul>
