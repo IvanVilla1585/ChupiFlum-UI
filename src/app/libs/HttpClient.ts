@@ -52,7 +52,7 @@ export class HttpService {
   }
 
   private subscribeToToken() {
-    let jsonString: string = this._cookieService.get("user");
+    let jsonString: string = this._cookieService.get("chupiflum.user");
     let user = JSON.parse(jsonString);
     this.authorization = `${user.token_type} ${user.access_token}`;
   }
