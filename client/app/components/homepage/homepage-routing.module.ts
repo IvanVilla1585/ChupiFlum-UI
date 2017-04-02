@@ -1,16 +1,28 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomepageComponent } from './homepage.component'
+import { HomepageComponent } from './homepage.component';
+import { PermissionsComponent } from './permissions/permissions.component';
+import { routesPermissions, routesPermissionsComponents } from './permissions/permissions-routing.module';
+import {routesShopping, routesShoppingComponents} from "./shopping/shopping-routing.module";
+import {routesProduction, routesProuctionComponents} from "./production/production-routing.module";
 
 const routes: Routes = [
   {
     path: 'menu',
-    component: HomepageComponent
+    component: HomepageComponent,
+    children: [
+      routesPermissions,
+      routesShopping,
+      routesProduction
+    ]
   }
 ];
 
 export const routesComponents = [
-  HomepageComponent
+  HomepageComponent,
+  routesPermissionsComponents,
+  routesShoppingComponents,
+  routesProuctionComponents
 ];
 
 @NgModule({

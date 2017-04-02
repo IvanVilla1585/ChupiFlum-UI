@@ -1,4 +1,4 @@
-<section class="container-login">
+<section class="container-login" id="general-container">
   <div class="container-general">
     <div class="layout-login">
       <div class="container-logo-login">
@@ -7,23 +7,23 @@
         </figure>
       </div>
       <div class="container-form-login">
-        <form action="">
+        <form>
           <div class="layout-form-login">
             <label for="username">
               Nombre de Usuario
-              <input type="text" name="username" id="username">
+              <input type="text"  id="username" [value]="username" (input)="username=$event.target.value">
             </label>
             <label for="password">
               Contraseña
-              <input type="password" name="password" id="password">
+              <input type="password" id="password" [value]="password" (input)="password=$event.target.value">
             </label>
           </div>
-          <div class="layout-buttons-login">
-            <div class="container-button">
-              <input class="btn-default" type="submit" value="Ingresar">
-            </div>
-          </div>
         </form>
+        <div class="layout-buttons-login">
+          <div class="container-button">
+            <button class="btn-default" (click)="sigIn($event)">Ingresar</button>
+          </div>
+        </div>
       </div>
       <div class="container-reset-password">
         <a href="">Recuperar Contraseña</a>

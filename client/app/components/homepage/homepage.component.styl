@@ -1,19 +1,21 @@
 @import "../../stylus/imports.variables.styl"
 
 
-.container-general
-  background-repeat no-repeat
-  .layout-general
+.container-homepage
+  display-flex()
+  flex-direction( column )
+  min-height 100vh
+  .layout-homepage
     display-flex()
     align-items( stretch )
 
     .panel-left
-      width 20%
+      width percent(0.20)
       background $background_menu
       height 100vh
 
     .panel-rigth
       display-flex()
       flex-direction( column )
-      width 80%
+      width percent(0.8)
       background $gray_ligth1

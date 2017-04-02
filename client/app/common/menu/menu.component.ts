@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
+=======
+import any = jasmine.any;
+>>>>>>> origin/development
 
 @Component({
   selector: 'app-menu',
@@ -9,62 +13,78 @@ export class MenuComponent implements OnInit {
 
   dataMenu: any [];
   isHidden: boolean;
+<<<<<<< HEAD
+=======
+  menuActivated: {label: '', url: '', id: ''};
+  urlIconRight: string;
+  urlIconDown: string;
+>>>>>>> origin/development
 
   constructor() {
     this.dataMenu = [];
     this.isHidden = true;
+<<<<<<< HEAD
+=======
+    this.menuActivated = {label: '', url: '', id: ''};
+    this.urlIconDown = '';
+    this.urlIconRight = '';
+>>>>>>> origin/development
   }
 
   ngOnInit() {
     this.getDataMenu();
+    this.urlIconRight = 'assets/images/icons/arrow_right.png';
+    this.urlIconDown = 'assets/images/icons/arrow_down.png';
   }
 
   getDataMenu(){
     this.dataMenu = [
       {
         label: 'Home',
-        url: '',
+        url: '/',
         subMenu: []
       },
       {
         label: 'Permisos',
-        url: '',
+        url: '/menu/permisos',
         subMenu: [
           {
             label: 'Usuarios',
-            url: '',
+            url: '/usuarios',
           },
           {
             label: 'Roles',
-            url: '',
-          },
-          {
-            label: 'Permisos',
-            url: '',
+            url: '/roles',
           }
-        ]
+        ],
+        id: 'sub-permissions'
       },
       {
         label: 'Compras',
-        url: '',
+        url: '/menu/compras',
         subMenu: [
           {
             label: 'Proveedores',
-            url: '',
+            url: '/proveedores',
           },
           {
             label: 'Pedidos',
-            url: '',
+            url: '/pedidos',
           },
           {
-            label: 'Kardex Pedidos',
-            url: '',
+            label: 'Entrada Pedidos',
+            url: '/entradamateriaprima',
+          },
+          {
+            label: 'Materia Prima',
+            url: '/materiaprima',
           }
-        ]
+        ],
+        id: 'sub-shopping'
       },
       {
         label: 'Producción',
-        url: '',
+        url: '/menu/produccion',
         subMenu: [
           {
             label: 'Ordenes de Producción',
@@ -72,13 +92,18 @@ export class MenuComponent implements OnInit {
           },
           {
             label: 'Maquinas',
-            url: '',
+            url: '/maquinas',
           },
           {
             label: 'Unidades de Medida',
-            url: '',
+            url: '/unidadmedidas',
+          },
+          {
+            label: 'Producto Terminado',
+            url: '/productoterminado',
           }
-        ]
+        ],
+        id: 'sub-production'
       },
       {
         label: 'Inventario',
@@ -90,29 +115,46 @@ export class MenuComponent implements OnInit {
           },
           {
             label: 'Producto Terminado',
-            url: '',
+            url: '/productoterminado',
           }
-        ]
+        ],
+        id: 'sub-rawmaterial'
       },
       {
         label: 'Ayudas',
-        url: '',
+        url: '/menu/ayudas',
         subMenu: [
           {
             label: 'Acerca de',
-            url: '',
+            url: '/acercade',
           },
           {
             label: 'Manual de Usuario',
-            url: '',
+            url: '/manualusuario',
           }
-        ]
+        ],
+        id: 'sub-help'
       }
     ]
   }
 
-  openSubMenu(){
-    this.isHidden = !this.isHidden;
+  openSubMenu(menu){
+    let sub = document.getElementById(menu.id);
+    let idSelect = `img_${menu.id}`;
+    let iconSelect = document.getElementById(idSelect);
+
+    if (this.menuActivated.id !== '' && this.menuActivated !== menu){
+      let lastMenu = document.getElementById(this.menuActivated.id);
+      let id = `img_${this.menuActivated.id}`;
+      let icon = document.getElementById(id);
+      lastMenu.classList.remove("activated");
+      lastMenu.classList.add('inactivated');
+      icon.classList.remove("img-activated");
+    }
+    sub.classList.add('activated');
+    iconSelect.classList.add("img-activated");
+
+    this.menuActivated = menu;
   }
 
 }
