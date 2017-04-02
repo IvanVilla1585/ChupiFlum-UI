@@ -9,11 +9,9 @@ import { TablemachinesComponent } from './production/machine/tablemachines/table
 
 @NgModule({
   imports: [
-    CommonModule,
-    HomepageRoutingModule,
-    PermissionsModule
+    CommonModule
   ],
-  declarations: [routesHomeComponents, MenuComponent, HeaderComponent, MachineComponent, TablemachinesComponent],
-  exports: [routesHomeComponents, MenuComponent, HeaderComponent]
+  declarations: [MenuComponent, HeaderComponent],
+  exports: [MenuComponent, HeaderComponent]
 })
 export class HomepageModule { }
