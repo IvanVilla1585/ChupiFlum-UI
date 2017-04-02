@@ -1,7 +1,8 @@
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {Component, OnInit, ViewContainerRef, ViewChild} from '@angular/core';
 import { UnitmeasureService } from '../../../../../services/production/unitmeasure/unitmeasure.service';
-import { ShowFeedback } from '../../../../../libs/showFeedback';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {ModalComponent} from "ng2-bs3-modal/components/modal";
 
 @Component({
   selector: 'app-unitmeasure',
@@ -15,27 +16,47 @@ export class UnitmeasureComponent implements OnInit {
   public description: string;
   public code: string;
   public equivalence: string;
+  public unit: any;
+  public unitForm: FormGroup;
 
-  constructor(private _unitmeasureService: UnitmeasureService, private _toast: ToastsManager, private _container: ViewContainerRef) {
+  constructor(
+    private _unitmeasureService: UnitmeasureService,
+    private _container: ViewContainerRef,
+    private fb: FormBuilder,
+    private _toast: ToastsManager
+  ){
     this.name = '';
     this.description = '';
     this.code = '';
     this.equivalence = '';
+    this.unit = {};
     this._toast.setRootViewContainerRef(_container);
   }
 
   ngOnInit() {
+      this.createForm();
+  }
+
+  createForm() {
+    this.unitForm = this.fb.group({ // <-- the parent FormGroup
+      name: ['', Validators.required ],
+      description: '',
+      code: ['', Validators.required ],
+      equivalence: ['', Validators.required ]
+    });
   }
 
   save(){
-    debugger
-    if (this.name && this.code && this.equivalence){
+      debugger
+    if (this.unitForm['_status'] === 'VALID'){
       let newUnit = {
-        nombre: this.name,
-        descripcion: this.description,
-        code: this.code,
-        equivalencia: this.equivalence
+        nombre: this.unitForm['_value']['name'],
+        descripcion: this.unitForm['_value']['description'],
+        code: this.unitForm['_value']['code'],
+        equivalencia: this.unitForm['_value']['equivalence']
       };
+
+      console.log(this.unitForm);
 
       this._unitmeasureService.save(newUnit)
         .subscribe(
