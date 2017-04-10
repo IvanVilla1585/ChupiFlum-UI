@@ -1,3 +1,64 @@
-<p>
-  tableunitmeasure works!
-</p>
+<div class="container-table-unit">
+  <div class="title-table-unit">
+    <h2>Unidades de Medida</h2>
+  </div>
+  <div class="layout-table-unit">
+    <div class="table">
+      <div class="table-header">
+        <div class="t-head">
+          <span>
+            Nombre
+          </span>
+        </div>
+        <div class="t-head">
+          <span>
+            Descripción
+          </span>
+        </div>
+        <div class="t-head">
+          <span>
+            Código
+          </span>
+        </div>
+        <div class="t-head">
+          <span>
+            Equivalencia
+          </span>
+        </div>
+        <div class="t-head">
+          <span>
+            Estado
+          </span>
+        </div>
+      </div>
+      <div class="table-body">
+        <div class="row-unit" *ngFor="let unit of units; let i = $index">
+          <div class="t-body">
+            <span>{{unit.nombre}}</span>
+          </div>
+          <div class="t-body">
+            <span>{{unit.descripcion}}</span>
+          </div>
+          <div class="t-body">
+            <span>{{unit.code}}</span>
+          </div>
+          <div class="t-body">
+            <span>{{unit.equivalencia}}</span>
+          </div>
+          <div class="t-body">
+            <span>Active</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="layout-search-pager">
+      <div class="panel-search">
+        <input type="text" placeholder="buscar unidad">
+        <button>Buscar</button>
+      </div>
+      <div class="panel-pager">
+        <app-pager></app-pager>
+      </div>
+    </div>
+  </div>
+</div>
