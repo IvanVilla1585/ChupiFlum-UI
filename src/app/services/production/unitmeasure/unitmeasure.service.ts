@@ -3,6 +3,7 @@ import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
 import {HttpService} from '../../../libs/HttpClient';
 import {Response} from "@angular/http";
+import {HttpClient} from "selenium-webdriver/http";
 
 
 
@@ -14,6 +15,10 @@ export class UnitmeasureService {
 
   constructor(private _httpService: HttpService){
     this.BASE_URL = 'http://localhost:8000/api';
+  }
+
+  list(): Observable<Response>{
+    return this._httpService.get(`${this.BASE_URL}/unidadesmedidas/`);
   }
 
   save(data): Observable<Response>{
