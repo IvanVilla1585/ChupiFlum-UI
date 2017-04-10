@@ -13,13 +13,15 @@ import { HomepageRoutingModule, routesHomeComponents } from './components/homepa
 import {HomepageModule} from "./components/homepage/homepage.module";
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 import {ModalDeleteComponent} from "./modals/production/DeleteModal/modal-delete.component";
+import { PagerComponent } from './common/pager/pager.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routesLoginComponents,
     routesHomeComponents,
-    ModalDeleteComponent
+    ModalDeleteComponent,
+    PagerComponent
   ],
   imports: [
     BrowserModule,
