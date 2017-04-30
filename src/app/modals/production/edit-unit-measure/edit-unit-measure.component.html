@@ -1,3 +1,47 @@
-<p>
-  edit-unit-measure works!
-</p>
+<div class="container-title-modal">
+  <h1 md-dialog-title class="title-modal">{{title}}</h1>
+</div>
+<div md-dialog-content class="container-modal">
+  <div class="container-error">
+    <p>{{errorMessage}}</p>
+  </div>
+  <div class="form-unitmeasure">
+    <form action="" [formGroup]="unitForm">
+      <div class="container-inputs">
+        <div class="layout-input">
+          <input type="hidden" formControlName="id" name="id" id="id" required>
+          <div class="container-input">
+            <label for="name">
+              *Nombre
+              <input type="text" formControlName="name" name="name" id="name" required>
+            </label>
+          </div>
+          <div class="container-input">
+            <label for="description">
+              Descripción
+              <input type="text" formControlName="description" name="description" id="description">
+            </label>
+          </div>
+        </div>
+        <div class="layout-input">
+          <div class="container-input">
+            <label for="code">
+              *Código
+              <input type="text" formControlName="code" name="code" id="code" required>
+            </label>
+          </div>
+          <div class="container-input">
+            <label for="equivalence">
+              *Equivalencia
+              <input type="text" formControlName="equivalence" name="equivalence" id="equivalence" required>
+            </label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div md-dialog-actions class="container-buttons-modal">
+  <button md-button (click)="update()">Actualizar</button>
+  <button md-button (click)="closeModal()">Cancelar</button>
+</div>
