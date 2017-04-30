@@ -3,6 +3,16 @@
     <h2>Unidades de Medida</h2>
   </div>
   <div class="layout-table-unit">
+    <div class="layout-sort-by">
+      <div class="container-sort">
+        <select name="" id="">
+          <option value="">Sort by</option>
+        </select>
+      </div>
+      <div class="container-button">
+        <button [routerLink]="['/menu/produccion/unidadmedidas']">Nueva Unidad</button>
+      </div>
+    </div>
     <div class="table">
       <div class="table-header">
         <div class="t-head">
@@ -33,7 +43,7 @@
       </div>
       <div class="table-body">
         <div class="row-unit" *ngFor="let unit of units; let i = $index">
-          <div class="t-body">
+          <div class="t-body" (click)="openModal(unit)">
             <span>{{unit.nombre}}</span>
           </div>
           <div class="t-body">
@@ -46,18 +56,34 @@
             <span>{{unit.equivalencia}}</span>
           </div>
           <div class="t-body">
-            <span>Active</span>
+            <div class="">
+              <md-slide-toggle
+                  [color]="color"
+                  [checked]="unit.estado"
+                  (click)="changeStatus(unit)"
+              >
+                <span [hidden]="!unit.estado">Activo</span>
+                <span [hidden]="unit.estado">Inactivo</span>
+              </md-slide-toggle>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="layout-search-pager">
       <div class="panel-search">
-        <input type="text" placeholder="buscar unidad">
-        <button>Buscar</button>
+        <input [(ngModel)]="search" type="text" placeholder="buscar unidad">
+        <button (click)="searchUnit()">Buscar</button>
       </div>
       <div class="panel-pager">
-        <app-pager></app-pager>
+        <app-pager
+            [totalPages]="totalPages"
+            [nextPage]="nextPage"
+            [previusPage]="previusPage"
+            [pages]="pages"
+            (updateDataPager)="updateData($event)"
+        >
+        </app-pager>
       </div>
     </div>
   </div>
