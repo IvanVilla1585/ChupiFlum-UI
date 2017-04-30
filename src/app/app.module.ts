@@ -11,17 +11,18 @@ import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { LoginRoutingModule, routesLoginComponents } from './components/login/login-routing.module';
 import { HomepageRoutingModule, routesHomeComponents } from './components/homepage/homepage-routing.module';
 import {HomepageModule} from "./components/homepage/homepage.module";
-import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
-import {ModalDeleteComponent} from "./modals/production/DeleteModal/modal-delete.component";
 import { PagerComponent } from './common/pager/pager.component';
+import {MdDialogModule, MdSlideToggleModule} from "@angular/material";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {EditUnitMeasureComponent} from "./modals/production/edit-unit-measure/edit-unit-measure.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     routesLoginComponents,
     routesHomeComponents,
-    ModalDeleteComponent,
-    PagerComponent
+    EditUnitMeasureComponent,
+    PagerComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,12 @@ import { PagerComponent } from './common/pager/pager.component';
     HomepageRoutingModule,
     ToastModule.forRoot(),
     HomepageModule,
-    Ng2Bs3ModalModule
+    BrowserAnimationsModule,
+    MdDialogModule,
+    MdSlideToggleModule
+  ],
+  entryComponents: [
+    EditUnitMeasureComponent
   ],
   providers: [CookieService, HttpService],
   bootstrap: [AppComponent]
