@@ -2,7 +2,6 @@ import {Component, OnInit, ViewContainerRef, ViewChild} from '@angular/core';
 import { UnitmeasureService } from '../../../../../services/production/unitmeasure/unitmeasure.service';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {ModalComponent} from "ng2-bs3-modal/components/modal";
 
 @Component({
   selector: 'app-unitmeasure',
@@ -47,13 +46,12 @@ export class UnitmeasureComponent implements OnInit {
   }
 
   save(){
-      debugger
     if (this.unitForm['_status'] === 'VALID'){
       let newUnit = {
-        nombre: this.unitForm['_value']['name'],
-        descripcion: this.unitForm['_value']['description'],
-        code: this.unitForm['_value']['code'],
-        equivalencia: this.unitForm['_value']['equivalence']
+        nombre: this.unitForm.get('name').value,
+        descripcion: this.unitForm.get('description').value,
+        code: this.unitForm.get('code').value,
+        equivalencia: this.unitForm.get('equivalence').value
       };
 
       console.log(this.unitForm);
@@ -62,7 +60,7 @@ export class UnitmeasureComponent implements OnInit {
         .subscribe(
           (res) => {
             let data = res.json();
-            this.clearForm();
+            this.unitForm.reset();
             this._toast.success(`Se guradó la unidad de medida ${data.nombre}`, 'Unidad de Medida!');
             console.log(res.json())
           },
