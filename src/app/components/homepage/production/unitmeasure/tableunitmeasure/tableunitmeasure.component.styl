@@ -17,9 +17,34 @@
   .layout-table-unit
     padding 21*$px 28*$px
 
+    .layout-sort-by
+      display-flex()
+      align-items( center )
+      justify( space-between )
+      height 56*$px
+      .container-sort
+        select
+          form-control(200, 35)
+          select-control()
+          padding-left 5*$px
+      .container-button
+        button
+          height 30*$px
+          width 100*$px
+          border none
+          background $background_menu
+          color $white
+          border-radius $radius
+          margin-left 7*$px
+          cursor pointer
+
     .table
       display-flex()
       flex-direction( column )
+      background-color $white
+      box-shadow $tableShadow
+      border 0.875*$px solid transparent
+      border-radius 0 0 3.5*$px 3.5*$px
 
       .table-header
         display-flex()
@@ -41,6 +66,8 @@
             width calc(100% / 5)
             padding 14*$px 7*$px
             text-align center
+            &:first-child
+              cursor pointer
 
   .layout-search-pager
     margin-top 28*$px
@@ -52,6 +79,7 @@
     .panel-search
       input
         form-control(250, 35)
+        padding-left 3.5*$px
 
       button
         height 30*$px
