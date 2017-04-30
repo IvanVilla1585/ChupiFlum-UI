@@ -1,0 +1,57 @@
+<div class="container-form-unitmeasure">
+  <div class="layout-form-unitmeasure">
+    <div class="title-form-unitmeasure">
+      <h2>Registro Unidad de Medida</h2>
+    </div>
+    <div class="form-unitmeasure">
+      <form action="" [formGroup]="unitForm">
+        <div class="container-inputs">
+          <div class="layout-input">
+            <div class="container-input">
+              <label for="name">
+                *Nombre
+                <input type="text" formControlName="name" name="name" id="name" required>
+              </label>
+            </div>
+            <div class="container-input">
+              <label for="description">
+                Descripción
+                <input type="text" formControlName="description" name="description" id="description">
+              </label>
+            </div>
+          </div>
+          <div class="layout-input">
+            <div class="container-input">
+              <label for="code">
+                *Código
+                <input type="text" formControlName="code" name="code" id="code" required>
+              </label>
+            </div>
+            <div class="container-input">
+              <label for="equivalence">
+                *Equivalencia
+                <input type="text" formControlName="equivalence" name="equivalence" id="equivalence" required>
+              </label>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="container-buttons">
+      <div class="button">
+        <img class="save" src="assets/images/icons/save.png" alt="" (click)="save()">
+      </div>
+      <div class="button">
+        <img class="search" src="assets/images/icons/search.png" alt="">
+      </div>
+      <div class="button">
+        <img class="delete" src="assets/images/icons/delete.png" alt="" (click)="open()">
+      </div>
+      <div class="button">
+        <img class="list" src="assets/images/icons/list.png" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,19 @@
+<div class="pager-component">
+  <div class="pager-layout">
+    <div class="first step" (click)="updateStep('first')">
+      <img src="assets/images/icons/first.png" alt="">
+    </div>
+    <div class="back step" (click)="updateStep('back')">
+      <img src="assets/images/icons/arrow_left.png" alt="">
+    </div>
+    <div class="number step" *ngFor="let number of pages; let i = $index">
+      {{number}}
+    </div>
+    <div class="prev step" (click)="updateStep('next')">
+      <img src="assets/images/icons/right.png" alt="">
+    </div>
+    <div class="last step" (click)="updateStep('last')">
+      <img src="assets/images/icons/last.png" alt="">
+    </div>
+  </div>
+</div>

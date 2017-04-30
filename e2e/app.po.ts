@@ -1,11 +1,12 @@
 import { browser, element, by } from 'protractor';
 
-export class ChupiFlumUIPage {
+export class UIChupiFlumPage {
   navigateTo() {
     return browser.get('/');
   }
 
   getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+    //noinspection TypeScriptUnresolvedFunction
+    return element(by.css('app h1')).getText();
   }
 }

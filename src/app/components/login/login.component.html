@@ -1,0 +1,33 @@
+<section class="container-login" id="general-container">
+  <div class="container-general">
+    <div class="layout-login">
+      <div class="container-logo-login">
+        <figure>
+          <img src="assets/images/logo.png" alt="">
+        </figure>
+      </div>
+      <div class="container-form-login">
+        <form>
+          <div class="layout-form-login">
+            <label for="username">
+              Nombre de Usuario
+              <input type="text"  id="username" name="username" [(ngModel)]="user.username">
+            </label>
+            <label for="password">
+              Contraseña
+              <input type="password" id="password" name="password" [(ngModel)]="user.password">
+            </label>
+          </div>
+        </form>
+        <div class="layout-buttons-login">
+          <div class="container-button">
+            <button class="btn-default" (click)="sigIn($event)">Ingresar</button>
+          </div>
+        </div>
+      </div>
+      <div class="container-reset-password">
+        <a href="">Recuperar Contraseña</a>
+      </div>
+    </div>
+  </div>
+</section>

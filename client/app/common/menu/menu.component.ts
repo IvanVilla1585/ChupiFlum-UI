@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
+=======
 import any = jasmine.any;
+>>>>>>> origin/development
 
 @Component({
   selector: 'app-menu',
@@ -10,16 +13,22 @@ export class MenuComponent implements OnInit {
 
   dataMenu: any [];
   isHidden: boolean;
+<<<<<<< HEAD
+=======
   menuActivated: {label: '', url: '', id: ''};
   urlIconRight: string;
   urlIconDown: string;
+>>>>>>> origin/development
 
   constructor() {
     this.dataMenu = [];
     this.isHidden = true;
+<<<<<<< HEAD
+=======
     this.menuActivated = {label: '', url: '', id: ''};
     this.urlIconDown = '';
     this.urlIconRight = '';
+>>>>>>> origin/development
   }
 
   ngOnInit() {

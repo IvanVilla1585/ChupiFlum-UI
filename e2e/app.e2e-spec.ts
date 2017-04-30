@@ -1,10 +1,10 @@
-import { ChupiFlumUIPage } from './app.po';
+import { UIChupiFlumPage } from './app.po';
 
-describe('chupi-flum-ui App', function() {
-  let page: ChupiFlumUIPage;
+describe('ui-chupi-flum App', () => {
+  let page: UIChupiFlumPage;
 
   beforeEach(() => {
-    page = new ChupiFlumUIPage();
+    page = new UIChupiFlumPage();
   });
 
   it('should display message saying app works', () => {

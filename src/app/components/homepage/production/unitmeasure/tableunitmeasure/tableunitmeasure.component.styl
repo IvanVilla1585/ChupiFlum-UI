@@ -1,0 +1,92 @@
+@import "../../../../../stylus/imports.variables.styl"
+
+
+.container-table-unit
+  .title-table-unit
+    sub-title()
+    justify(center)
+    align-items( flex-start )
+    border-bottom none
+    padding-top 28*$px
+    padding-bottom 28*$px
+
+    h2
+      margin 0
+      color $gray
+
+  .layout-table-unit
+    padding 21*$px 28*$px
+
+    .layout-sort-by
+      display-flex()
+      align-items( center )
+      justify( space-between )
+      height 56*$px
+      .container-sort
+        select
+          form-control(200, 35)
+          select-control()
+          padding-left 5*$px
+      .container-button
+        button
+          height 30*$px
+          width 100*$px
+          border none
+          background $background_menu
+          color $white
+          border-radius $radius
+          margin-left 7*$px
+          cursor pointer
+
+    .table
+      display-flex()
+      flex-direction( column )
+      background-color $white
+      box-shadow $tableShadow
+      border 0.875*$px solid transparent
+      border-radius 0 0 3.5*$px 3.5*$px
+
+      .table-header
+        display-flex()
+        background $background_menu
+
+        .t-head
+          width percent(0.2)
+          padding 14*$px 7*$px
+          text-align center
+
+          span
+            color $white
+
+      .table-body
+        .row-unit
+          display-flex()
+          border-bottom 1px solid $background_menu
+          .t-body
+            width calc(100% / 5)
+            padding 14*$px 7*$px
+            text-align center
+            &:first-child
+              cursor pointer
+
+  .layout-search-pager
+    margin-top 28*$px
+    height 52.5*$px
+    display-flex()
+    justify( space-between )
+    align-items( center )
+
+    .panel-search
+      input
+        form-control(250, 35)
+        padding-left 3.5*$px
+
+      button
+        height 30*$px
+        width 100*$px
+        border none
+        background $background_menu
+        color $white
+        border-radius $radius
+        margin-left 7*$px
+        cursor pointer

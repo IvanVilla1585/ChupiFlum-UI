@@ -1,0 +1,24 @@
+@import "../../stylus/imports.variables.styl"
+
+.pager-component
+  .pager-layout
+    display-flex()
+
+    .step
+      display-flex()
+      vertical-center()
+      width 26.25*$px
+      height @width
+      cursor pointer
+      border 0.875*$px solid $background_menu
+      &:nth-child(n + 2)
+        border-left none
+
+      img
+        width 21*$px
+
+    .first, .back, .prev, .last
+      background $background_menu
+
+    .first, .prev
+      border-right 0.875*$px solid $white
