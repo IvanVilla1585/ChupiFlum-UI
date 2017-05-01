@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {UnitmeasureService} from "../../services/production/unitmeasure/unitmeasure.service";
+import {UnitmeasureService} from "../../services/production/unitmeasure.service";
 
 @Component({
   selector: 'app-pager',
