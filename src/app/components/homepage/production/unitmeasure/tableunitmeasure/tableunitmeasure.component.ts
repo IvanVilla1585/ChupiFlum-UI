@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {UnitmeasureService} from "../../../../../services/production/unitmeasure/unitmeasure.service";
+import {UnitmeasureService} from "../../../../../services/production/unitmeasure.service";
 import {ToastsManager} from "ng2-toastr";
 import {MdDialogRef} from "@angular/material";
 import {EditUnitMeasureComponent} from "../../../../../modals/production/edit-unit-measure/edit-unit-measure.component";

@@ -1,0 +1,55 @@
+<div class="container-title-modal">
+  <h1 md-dialog-title class="title-modal">{{title}}</h1>
+</div>
+<div md-dialog-content class="container-modal">
+  <div class="container-error">
+    <p>{{errorMessage}}</p>
+  </div>
+  <div class="form-machine">
+    <form [formGroup]="machineForm">
+      <div class="container-inputs">
+        <div class="layout-input">
+          <input type="hidden" name="id" formControlName="id">
+          <div class="container-input">
+            <label for="name">
+              *Nombre Máquina
+              <input type="text" id="name" name="name" formControlName="name">
+            </label>
+          </div>
+          <div class="container-input">
+            <label for="description">
+              Descripción
+              <input type="text" id="description" name="description" formControlName="description">
+            </label>
+          </div>
+        </div>
+        <div class="layout-input">
+          <div class="container-input">
+            <label for="quantity">
+              *Capacidad Producción
+              <input type="text" id="quantity" name="quantity" formControlName="quantity">
+            </label>
+          </div>
+          <div class="container-input">
+            <label for="unit">
+              *Unidad de Medida
+              <select id="unit" name="unit" formControlName="unit">
+                <option value="" selected>Seleccione una unidad</option>
+                <option *ngFor="let unit of units; let i = index"
+                        [hidden]="!unit.estado"
+                        value="{{unit.id}}"
+                >
+                  {{unit.nombre}}
+                </option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div md-dialog-actions class="container-buttons-modal">
+  <button md-button (click)="update()">Actualizar</button>
+  <button md-button (click)="closeModal()">Cancelar</button>
+</div>

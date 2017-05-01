@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewContainerRef, ViewChild} from '@angular/core';
-import { UnitmeasureService } from '../../../../../services/production/unitmeasure/unitmeasure.service';
+import { UnitmeasureService } from '../../../../../services/production/unitmeasure.service';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 

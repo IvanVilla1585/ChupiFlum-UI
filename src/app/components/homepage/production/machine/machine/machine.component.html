@@ -4,41 +4,49 @@
       <h2>Registro Máquinas</h2>
     </div>
     <div class="form-machine">
-      <form action="">
+      <form [formGroup]="machineForm">
         <div class="container-inputs">
           <div class="layout-input">
             <div class="container-input">
-              <label for="">
+              <label for="name">
                 *Nombre Máquina
-                <input type="text">
+                <input type="text" id="name" name="name" formControlName="name">
               </label>
             </div>
             <div class="container-input">
-              <label for="">
+              <label for="description">
                 Descripción
-                <input type="text">
+                <input type="text" id="description" name="description" formControlName="description">
               </label>
             </div>
           </div>
           <div class="layout-input">
             <div class="container-input">
-              <label for="">
+              <label for="quantity">
                 *Capacidad Producción
-                <input type="text">
+                <input type="text" id="quantity" name="quantity" formControlName="quantity">
               </label>
             </div>
             <div class="container-input">
-              <label for="">
+              <label for="unit">
                 *Unidad de Medida
-                <input type="text">
+                <select id="unit" name="unit" formControlName="unit">
+                  <option value="" selected>Seleccione una unidad</option>
+                  <option *ngFor="let unit of units; let i = index"
+                          [hidden]="!unit.estado"
+                          value="{{unit.id}}"
+                  >
+                    {{unit.nombre}}
+                  </option>
+                </select>
               </label>
             </div>
           </div>
           <div class="layout-input">
             <div class="container-input">
-              <label for="">
+              <label for="time">
                 *Tiempo Producción
-                <input type="email">
+                <input type="time" id="time" name="time" formControlName="time">
               </label>
             </div>
           </div>
@@ -46,18 +54,9 @@
       </form>
     </div>
     <div class="container-buttons">
-      <div class="button">
-        <img class="save" src="assets/images/icons/save.png" alt="">
-      </div>
-      <div class="button">
-        <img class="search" src="assets/images/icons/search.png" alt="">
-      </div>
-      <div class="button">
-        <img class="delete" src="assets/images/icons/delete.png" alt="">
-      </div>
-      <div class="button">
-        <img class="list" src="assets/images/icons/list.png" alt="">
-      </div>
+      <button class="button" (click)="save()">Guardar</button>
+      <button class="button" [routerLink]="['/menu/produccion/tablamaquinas']">Listado</button>
+      <button class="button">Cancelar</button>
     </div>
   </div>
 </div>

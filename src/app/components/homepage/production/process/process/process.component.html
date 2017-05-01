@@ -4,19 +4,19 @@
       <h2>Registro Procesos</h2>
     </div>
     <div class="form-process">
-      <form action="">
+      <form [formGroup]="formProcess">
         <div class="container-inputs">
           <div class="layout-input">
             <div class="container-input">
-              <label for="">
+              <label for="name">
                 *Nombre
-                <input type="text">
+                <input type="text" id="name" name="name" formControlName="name">
               </label>
             </div>
             <div class="container-input">
-              <label for="">
+              <label for="description">
                 Descripción
-                <input type="text">
+                <input type="text" id="description" name="description" formControlName="description">
               </label>
             </div>
           </div>
@@ -24,15 +24,15 @@
             <div class="container-input">
               <label for="machine">
                 *Maquina
-                <select name="machine" id="machine">
+                <select name="machine" id="machine" formControlName="machine">
                   <option value="">Seleccione una maquina</option>
                 </select>
               </label>
             </div>
             <div class="container-input">
-              <label for="">
+              <label for="time">
                 *Tiempo
-                <input type="text">
+                <input type="text" id="time" name="time" formControlName="time">
               </label>
             </div>
           </div>
@@ -40,18 +40,9 @@
       </form>
     </div>
     <div class="container-buttons">
-      <div class="button">
-        <img class="save" src="assets/images/icons/save.png" alt="">
-      </div>
-      <div class="button">
-        <img class="search" src="assets/images/icons/search.png" alt="">
-      </div>
-      <div class="button">
-        <img class="delete" src="assets/images/icons/delete.png" alt="">
-      </div>
-      <div class="button">
-        <img class="list" src="assets/images/icons/list.png" alt="">
-      </div>
+      <button class="button">Guardar</button>
+      <button class="button" [routerLink]="['/menu/produccion/tablaprocesos']">Listado</button>
+      <button class="button">Cancelar</button>
     </div>
   </div>
 </div>
