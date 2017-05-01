@@ -1,11 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
-import {HttpService} from '../../../libs/HttpClient';
+import {HttpService} from '../../libs/HttpClient';
 import {Response} from "@angular/http";
-import {HttpClient} from "selenium-webdriver/http";
-
-
 
 
 @Injectable()
