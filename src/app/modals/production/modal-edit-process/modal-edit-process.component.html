@@ -1,3 +1,54 @@
-<p>
-  modal-edit-process works!
-</p>
+<div class="container-title-modal">
+  <h1 md-dialog-title class="title-modal">{{title}}</h1>
+</div>
+<div md-dialog-content class="container-modal">
+  <div class="container-error">
+    <p>{{errorMessage}}</p>
+  </div>
+  <div class="form-process">
+    <form [formGroup]="formProcess">
+      <div class="container-inputs">
+        <div class="layout-input">
+          <input type="hidden" name="id" formControlName="id">
+          <div class="container-input">
+            <label for="name">
+              *Nombre
+              <input type="text" id="name" name="name" formControlName="name">
+            </label>
+          </div>
+          <div class="container-input">
+            <label for="description">
+              Descripción
+              <input type="text" id="description" name="description" formControlName="description">
+            </label>
+          </div>
+        </div>
+        <div class="layout-input">
+          <div class="container-input">
+            <label for="machine">
+              *Máquina
+              <select name="machine" id="machine" formControlName="machine">
+                <option value="">Seleccione una maquina</option>
+                <option *ngFor="let machine of machines; let i = index"
+                        value="{{machine.id}}"
+                >
+                  {{machine.nombre}}
+                </option>
+              </select>
+            </label>
+          </div>
+          <div class="container-input">
+            <label for="time">
+              *Tiempo
+              <input type="text" id="time" name="time" formControlName="time">
+            </label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div md-dialog-actions class="container-buttons-modal">
+  <button md-button (click)="update()">Actualizar</button>
+  <button md-button (click)="closeModal()">Cancelar</button>
+</div>
