@@ -23,9 +23,14 @@
           <div class="layout-input">
             <div class="container-input">
               <label for="machine">
-                *Maquina
+                *Máquina
                 <select name="machine" id="machine" formControlName="machine">
                   <option value="">Seleccione una maquina</option>
+                  <option *ngFor="let machine of machines; let i = index"
+                    value="{{machine.id}}"
+                  >
+                    {{machine.nombre}}
+                  </option>
                 </select>
               </label>
             </div>
@@ -40,9 +45,9 @@
       </form>
     </div>
     <div class="container-buttons">
-      <button class="button">Guardar</button>
+      <button class="button" (click)="save()">Guardar</button>
       <button class="button" [routerLink]="['/menu/produccion/tablaprocesos']">Listado</button>
-      <button class="button">Cancelar</button>
+      <button class="button" (click)="cancel()">Cancelar</button>
     </div>
   </div>
 </div>

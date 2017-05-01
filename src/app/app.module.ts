@@ -16,6 +16,7 @@ import {MdDialogModule, MdSlideToggleModule} from "@angular/material";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {EditUnitMeasureComponent} from "./modals/production/edit-unit-measure/edit-unit-measure.component";
 import { ModalEditMachineComponent } from './modals/production/modal-edit-machine/modal-edit-machine.component';
+import { ModalEditProcessComponent } from './modals/production/modal-edit-process/modal-edit-process.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ModalEditMachineComponent } from './modals/production/modal-edit-machin
     EditUnitMeasureComponent,
     PagerComponent,
     ModalEditMachineComponent,
+    ModalEditProcessComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { ModalEditMachineComponent } from './modals/production/modal-edit-machin
   ],
   entryComponents: [
     EditUnitMeasureComponent,
-    ModalEditMachineComponent
+    ModalEditMachineComponent,
+    ModalEditProcessComponent
   ],
   providers: [CookieService, HttpService],
   bootstrap: [AppComponent]
