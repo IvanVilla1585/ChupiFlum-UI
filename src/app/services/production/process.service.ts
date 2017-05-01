@@ -37,7 +37,7 @@ export class ProcessService{
     return this._httpService.delete(`${this.BASE_URL}/procesos/${id}/`, JSON.stringify({}));
   }
 
-  getUnits(): Observable<Response>{
-    return this._httpService.get(`${this.BASE_URL}/unidadesmedidas/`);
+  findAllMachines(): Observable<Response>{
+    return this._httpService.get(`${this.BASE_URL}/maquinas/`);
   }
 }
