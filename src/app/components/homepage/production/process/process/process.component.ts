@@ -12,7 +12,7 @@ import {ProcessService} from "../../../../../services/production/process.service
 export class ProcessComponent implements OnInit {
 
   formProcess: FormGroup;
-  units: any [];
+  machines: any [];
 
   constructor(
     private _processService: ProcessService,
@@ -20,13 +20,13 @@ export class ProcessComponent implements OnInit {
     private fb: FormBuilder,
     private _toast: ToastsManager
   ) {
-    this.units = [];
+    this.machines = [];
     this._toast.setRootViewContainerRef(_container);
   }
 
   ngOnInit() {
     this.createForm();
-
+    this.getUnits();
   }
 
   createForm() {
@@ -39,15 +39,43 @@ export class ProcessComponent implements OnInit {
   }
 
   getUnits(){
-    this._processService.getUnits().subscribe(
+    this._processService.findAllMachines().subscribe(
       (res) => {
-        this.units = res.json();
+        let data = res.json();
+        this.machines = data.results;
       },
       (err) => {
-        this.units = [];
+        this.machines = [];
         console.log(err.json())
       }
     );
+  }
+
+  save(){
+    if (this.formProcess['_status'] === 'VALID'){
+      let process = {
+        nombre: this.formProcess.get('name').value,
+        descripcion: this.formProcess.get('description').value,
+        maquina: this.formProcess.get('machine').value,
+        tiempo: this.formProcess.get('time').value
+      }
+      this._processService.save(process).subscribe(
+        (res) => {
+          let data = res.json();
+          this.formProcess.reset();
+          this._toast.success(`El proceso ${data.nombre} fue creado`, 'Proceso!');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }else{
+      this._toast.info('Todos los campos marcados con * son obligatorios', 'Proceso!');
+    }
+  }
+
+  cancel(){
+    this.formProcess.reset();
   }
 
 }
