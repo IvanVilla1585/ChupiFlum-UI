@@ -15,6 +15,7 @@ import { PagerComponent } from './common/pager/pager.component';
 import {MdDialogModule, MdSlideToggleModule} from "@angular/material";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {EditUnitMeasureComponent} from "./modals/production/edit-unit-measure/edit-unit-measure.component";
+import { ModalEditMachineComponent } from './modals/production/modal-edit-machine/modal-edit-machine.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {EditUnitMeasureComponent} from "./modals/production/edit-unit-measure/ed
     routesHomeComponents,
     EditUnitMeasureComponent,
     PagerComponent,
+    ModalEditMachineComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import {EditUnitMeasureComponent} from "./modals/production/edit-unit-measure/ed
     MdSlideToggleModule
   ],
   entryComponents: [
-    EditUnitMeasureComponent
+    EditUnitMeasureComponent,
+    ModalEditMachineComponent
   ],
   providers: [CookieService, HttpService],
   bootstrap: [AppComponent]
