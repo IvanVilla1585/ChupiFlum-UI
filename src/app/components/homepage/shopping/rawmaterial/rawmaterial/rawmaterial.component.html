@@ -4,47 +4,61 @@
       <h2>Registro Materia Prima</h2>
     </div>
     <div class="form-rawmaterial">
-      <form action="">
+      <form [formGroup]="formMaterial">
         <div class="container-inputs">
           <div class="layout-input">
             <div class="container-input">
-              <label for="">
+              <label for="name">
                 *Nombre
-                <input type="text">
+                <input type="text" name="name" id="name" formControlName="name">
               </label>
             </div>
             <div class="container-input">
-              <label for="">
+              <label for="description">
                 Descripción
-                <input type="text">
+                <input type="text" name="description" id="description" formControlName="description">
               </label>
             </div>
           </div>
           <div class="layout-input">
             <div class="container-input">
-              <label for="">
+              <label for="unit">
                 *Unidad de Medida
-                <input type="text">
+                <select name="unit" id="unit" formControlName="unit">
+                  <option value="">Seleccione una unidad</option>
+                  <option *ngFor="let unit of units; let i = index"
+                    value="{{unit.id}}"
+                  >
+                    {{unit.nombre}}
+                  </option>
+                </select>
               </label>
             </div>
             <div class="container-input">
-              <label for="">
+              <label for="category">
                 *Categoria
-                <input type="text">
+                <select name="category" id="category" formControlName="category">
+                  <option value="">Seleccione una Categoria</option>
+                  <option *ngFor="let category of categories; let i = index"
+                    value="{{category.id}}"
+                  >
+                    {{category.nombre}}
+                  </option>
+                </select>
               </label>
             </div>
           </div>
           <div class="layout-input">
             <div class="container-input">
-              <label for="">
+              <label for="quantity">
                 Cantidad en Inventario
-                <input type="text">
+                <input type="text" name="quantity" id="quantity" formControlName="quantity">
               </label>
             </div>
             <div class="container-input">
-              <label for="">
+              <label for="stock">
                 *Stock
-                <input type="text">
+                <input type="text" name="stock" id="stock" formControlName="stock">
               </label>
             </div>
           </div>
@@ -52,18 +66,9 @@
       </form>
     </div>
     <div class="container-buttons">
-      <div class="button">
-        <img class="save" src="assets/images/icons/save.png" alt="">
-      </div>
-      <div class="button">
-        <img class="search" src="assets/images/icons/search.png" alt="">
-      </div>
-      <div class="button">
-        <img class="delete" src="assets/images/icons/delete.png" alt="">
-      </div>
-      <div class="button">
-        <img class="list" src="assets/images/icons/list.png" alt="">
-      </div>
+      <button class="button" (click)="save()">Guardar</button>
+      <button class="button" [routerLink]="['/menu/compras/tablamateriaprima']">Listado</button>
+      <button class="button">Cancelar</button>
     </div>
   </div>
 </div>
