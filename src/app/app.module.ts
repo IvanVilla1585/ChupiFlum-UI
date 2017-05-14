@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import {LoginModule} from "./components/login/login.module";
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { HttpService } from './libs/HttpClient';
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import {ToastModule, ToastOptions} from 'ng2-toastr/ng2-toastr';
 import { LoginRoutingModule, routesLoginComponents } from './components/login/login-routing.module';
 import { HomepageRoutingModule, routesHomeComponents } from './components/homepage/homepage-routing.module';
 import {HomepageModule} from "./components/homepage/homepage.module";
@@ -17,6 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {EditUnitMeasureComponent} from "./modals/production/edit-unit-measure/edit-unit-measure.component";
 import { ModalEditMachineComponent } from './modals/production/modal-edit-machine/modal-edit-machine.component';
 import { ModalEditProcessComponent } from './modals/production/modal-edit-process/modal-edit-process.component';
+import {CustomOption} from "./libs/optionsToast";
+import { ModalEditRawMaterialComponent } from './modals/shopping/modal-edit-raw-material/modal-edit-raw-material.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { ModalEditProcessComponent } from './modals/production/modal-edit-proces
     PagerComponent,
     ModalEditMachineComponent,
     ModalEditProcessComponent,
+    ModalEditRawMaterialComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,9 +48,14 @@ import { ModalEditProcessComponent } from './modals/production/modal-edit-proces
   entryComponents: [
     EditUnitMeasureComponent,
     ModalEditMachineComponent,
-    ModalEditProcessComponent
+    ModalEditProcessComponent,
+    ModalEditRawMaterialComponent
   ],
-  providers: [CookieService, HttpService],
+  providers: [
+    CookieService,
+    HttpService,
+    {provide: ToastOptions, useClass: CustomOption},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
