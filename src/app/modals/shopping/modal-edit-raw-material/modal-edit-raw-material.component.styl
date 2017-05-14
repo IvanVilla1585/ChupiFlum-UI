@@ -1,0 +1,39 @@
+@import "../../../stylus/imports.variables.styl"
+
+md-dialog-container
+  padding 0 !important
+.container-modal
+  .form-material
+    background $white
+    form
+      .container-inputs
+        .layout-input
+          display-flex()
+          justify(space-between)
+
+          .container-input
+            width percent(0.48)
+
+            label
+              display block
+              margin 15px  auto
+              color $gray1
+              font-size 15px
+              width percent(1)
+
+              input
+                form-control(250, 35)
+                display block
+                margin-top 5.8px
+                width percent(1)
+
+              select
+                form-control(250, 35)
+                select-control()
+                width percent(1)
+
+.container-buttons-modal
+  button
+    buttons()
+    &:first-child
+      margin-right 14*$px

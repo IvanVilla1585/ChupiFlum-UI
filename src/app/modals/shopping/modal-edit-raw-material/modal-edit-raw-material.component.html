@@ -1,0 +1,75 @@
+<div class="container-title-modal">
+  <h1 md-dialog-title class="title-modal">{{title}}</h1>
+</div>
+<div md-dialog-content class="container-modal">
+  <div class="container-error">
+    <p>{{errorMessage}}</p>
+  </div>
+  <div class="form-material">
+    <form [formGroup]="formMaterial">
+      <div class="container-inputs">
+        <div class="layout-input">
+          <input type="hidden" name="id" formControlName="id">
+          <div class="container-input">
+            <label for="name">
+              *Nombre
+              <input type="text" name="name" id="name" formControlName="name">
+            </label>
+          </div>
+          <div class="container-input">
+            <label for="description">
+              Descripción
+              <input type="text" name="description" id="description" formControlName="description">
+            </label>
+          </div>
+        </div>
+        <div class="layout-input">
+          <div class="container-input">
+            <label for="unit">
+              *Unidad de Medida
+              <select name="unit" id="unit" formControlName="unit">
+                <option value="">Seleccione una unidad</option>
+                <option *ngFor="let unit of units; let i = index"
+                        value="{{unit.id}}"
+                >
+                  {{unit.nombre}}
+                </option>
+              </select>
+            </label>
+          </div>
+          <div class="container-input">
+            <label for="category">
+              *Categoria
+              <select name="category" id="category" formControlName="category">
+                <option value="">Seleccione una Categoria</option>
+                <option *ngFor="let category of categories; let i = index"
+                        value="{{category.id}}"
+                >
+                  {{category.nombre}}
+                </option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div class="layout-input">
+          <div class="container-input">
+            <label for="quantity">
+              Cantidad en Inventario
+              <input type="text" name="quantity" id="quantity" formControlName="quantity">
+            </label>
+          </div>
+          <div class="container-input">
+            <label for="stock">
+              *Stock
+              <input type="text" name="stock" id="stock" formControlName="stock">
+            </label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div md-dialog-actions class="container-buttons-modal">
+  <button md-button (click)="update()">Actualizar</button>
+  <button md-button (click)="closeModal()">Cancelar</button>
+</div>
