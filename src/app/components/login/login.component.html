@@ -7,15 +7,15 @@
         </figure>
       </div>
       <div class="container-form-login">
-        <form>
+        <form [formGroup]="loginForm">
           <div class="layout-form-login">
             <label for="username">
               Nombre de Usuario
-              <input type="text"  id="username" name="username" [(ngModel)]="user.username">
+              <input type="text"  id="username" name="username" formControlName="username">
             </label>
             <label for="password">
               Contraseña
-              <input type="password" id="password" name="password" [(ngModel)]="user.password">
+              <input type="password" id="password" name="password" formControlName="password">
             </label>
           </div>
         </form>
