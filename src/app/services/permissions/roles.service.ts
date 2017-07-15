@@ -13,7 +13,7 @@ export class RolesService {
     this.url = 'http://localhost:8000/api/permisos';
   }
 
-  getPermissions() : Promise<Permission[]> {
+  /*getPermissions() : Promise<Permission[]> {
     const url = this.url;
     return this.http.get(url)
       .toPromise()
@@ -24,5 +24,5 @@ export class RolesService {
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
-  }
+  }*/
 }

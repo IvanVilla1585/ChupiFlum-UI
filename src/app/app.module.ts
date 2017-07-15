@@ -19,17 +19,21 @@ import { ModalEditMachineComponent } from './modals/production/modal-edit-machin
 import { ModalEditProcessComponent } from './modals/production/modal-edit-process/modal-edit-process.component';
 import {CustomOption} from "./libs/optionsToast";
 import { ModalEditRawMaterialComponent } from './modals/shopping/modal-edit-raw-material/modal-edit-raw-material.component';
+import { UserPasswordCreateComponent } from './components/password/user-password-create/user-password-create.component';
+import { PasswordComponent } from './components/password/password.component';
+import {routesPasswordComponents, PasswordRoutingModule} from "./components/password/password-routing.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     routesLoginComponents,
     routesHomeComponents,
+    routesPasswordComponents,
     EditUnitMeasureComponent,
     PagerComponent,
     ModalEditMachineComponent,
     ModalEditProcessComponent,
-    ModalEditRawMaterialComponent,
+    ModalEditRawMaterialComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +43,7 @@ import { ModalEditRawMaterialComponent } from './modals/shopping/modal-edit-raw-
     AppRoutingModule,
     LoginRoutingModule,
     HomepageRoutingModule,
+    PasswordRoutingModule,
     ToastModule.forRoot(),
     HomepageModule,
     BrowserAnimationsModule,
