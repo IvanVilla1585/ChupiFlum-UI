@@ -15,7 +15,7 @@ export class AuthService {
   private client_secret: string;
   private grant_type: string;
   private BASE_URL: string;
-
+  
   constructor(private _http: Http, private _cookieService: CookieService) {
 
     this.BASE_URL = 'http://localhost:8000/api';
@@ -25,15 +25,14 @@ export class AuthService {
     });
     this.options = new RequestOptions({ headers: this.headers });
     this.grant_type = 'password';
-    this.client_id = 'Xb3mTjNVtkNs8N6OxRdpJRwfVNgXlGd2NTwIWXiA';
-    this.client_secret = 'MPWU4Vge9xw1ocmDGcLLNzYiVW5lp7n9Jc95le4zsIjtAB2siakzAcq5wZzy4eOLNDzcmA8uSRy11jyQBYjorV0muCzRCGab5jHvm7GcoODxpBp0Quc8w4ZmFERbTwS4';
+    this.client_id = 'sUtZcpjFIwRfKeZnhkHchGOVaBlAYhzfaIZwMC4n';
+    this.client_secret = 'Ba4D0LNi2dp0cyvB9ABIVDpSZfDpGOyCP9r62bTHfMWlfIq9gFmXD53mnRGF0Hg7v5baUkuU3nBwWOcr5USZuE0a40NTU2KGGEd5hrS371iHInnqKUd3SI36flZWEJ8L';
   }
 
   login(data): Observable<any> {
     return this._http.post(`${this.BASE_URL}/sigin`, JSON.stringify(data), this.options)
       .map((res: any) => res.json())
       .mergeMap((response: any) => {
-      debugger
         let json = this.completeDataToken(data);
         return this._http.post(`${this.BASE_URL}/token/`, JSON.stringify(json), this.options)
         .map((res: any) => {

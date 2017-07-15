@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -13,7 +14,7 @@ export class MenuComponent implements OnInit {
   urlIconRight: string;
   urlIconDown: string;
 
-  constructor() {
+  constructor(private _router: Router) {
     this.dataMenu = [];
     this.isHidden = true;
     this.menuActivated = {label: '', url: '', id: ''};
@@ -40,11 +41,11 @@ export class MenuComponent implements OnInit {
         subMenu: [
           {
             label: 'Usuarios',
-            url: '/usuarios',
+            url: '/menu/permisos/usuarios',
           },
           {
             label: 'Roles',
-            url: '/roles',
+            url: '/menu/permisos/roles',
           }
         ],
         id: 'sub-permissions'
@@ -55,19 +56,19 @@ export class MenuComponent implements OnInit {
         subMenu: [
           {
             label: 'Proveedores',
-            url: '/proveedores',
+            url: '/menu/compras/proveedores',
           },
           {
             label: 'Pedidos',
-            url: '/pedidos',
+            url: '/menu/compras/pedidos',
           },
           {
             label: 'Entrada Pedidos',
-            url: '/entradamateriaprima',
+            url: '/menu/compras/entradamateriaprima',
           },
           {
             label: 'Materia Prima',
-            url: '/materiaprima',
+            url: '/menu/compras/materiaprima',
           }
         ],
         id: 'sub-shopping'
@@ -82,15 +83,15 @@ export class MenuComponent implements OnInit {
           },
           {
             label: 'Maquinas',
-            url: '/maquinas',
+            url: '/menu/produccion/maquinas',
           },
           {
             label: 'Unidades de Medida',
-            url: '/unidadmedidas',
+            url: '/menu/produccion/unidadmedidas',
           },
           {
             label: 'Producto Terminado',
-            url: '/productoterminado',
+            url: '/menu/produccion/productoterminado',
           }
         ],
         id: 'sub-production'
@@ -126,6 +127,11 @@ export class MenuComponent implements OnInit {
         id: 'sub-help'
       }
     ]
+  }
+
+  navigation(menu) {
+    debugger
+    this._router.navigate([menu.url]);
   }
 
   openSubMenu(menu){
