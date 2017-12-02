@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatSlideToggle} from '@angular/material';
 import { TableunitmeasureRoutingModule } from './tableunitmeasure-routing.module';
 import { TableunitmeasureComponent } from './tableunitmeasure.component';
 
@@ -8,6 +9,6 @@ import { TableunitmeasureComponent } from './tableunitmeasure.component';
     CommonModule,
     TableunitmeasureRoutingModule
   ],
-  declarations: [TableunitmeasureComponent]
+  declarations: [TableunitmeasureComponent, MatSlideToggle]
 })
 export class TableunitmeasureModule { }
