@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatSlideToggle} from '@angular/material';
-import { TableunitmeasureRoutingModule } from './tableunitmeasure-routing.module';
-import { TableunitmeasureComponent } from './tableunitmeasure.component';
+import { TablesupplierComponent } from './tablesupplier.component';
 
 @NgModule({
   imports: [
-    CommonModule,
-    TableunitmeasureRoutingModule
+    CommonModule
   ],
-  declarations: [TableunitmeasureComponent, MatSlideToggle]
+  declarations: [TablesupplierComponent, MatSlideToggle]
 })
-export class TableunitmeasureModule { }
+export class TablesupplierModule { }
