@@ -35,6 +35,10 @@ export const routesProduction = {
       component: ProductComponent
     },
     {
+      path: 'productoterminado/:id',
+      component: ProductComponent
+    },
+    {
       path: 'tablaproductosterminados',
       component: TableproductsComponent
     },
