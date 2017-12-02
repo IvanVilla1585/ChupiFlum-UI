@@ -47,7 +47,7 @@ export class UserComponent implements OnInit {
   createForm() {
     this.userForm = this.fb.group({ // <-- the parent FormGroup
       first_name: ['', Validators.required],
-      last_name: [''],
+      last_name: ['', Validators.required],
       email: ['', Validators.required],
       group: ['', Validators.required]
     });
@@ -56,12 +56,15 @@ export class UserComponent implements OnInit {
   save(){
     debugger
     if (this.userForm.status === 'VALID'){
+      debugger
+      let username = `${this.userForm.get('first_name').value.trim()}${this.userForm.get('last_name').value.trim()}`;
       let data = {
-        first_name: this.userForm.get('first_name').value,
-        last_name: this.userForm.get('last_name').value,
+        first_name: this.userForm.get('first_name').value.trim(),
+        last_name: this.userForm.get('last_name').value.trim(),
         email: this.userForm.get('email').value,
         groups: [parseInt(this.userForm.get('group').value)],
-        username: `${this.userForm.get('first_name').value}${this.userForm.get('last_name').value}`,
+        username: username,
+        password: `${username}.P1234`,
         is_active: false
       }
       this._userService.save(data)
