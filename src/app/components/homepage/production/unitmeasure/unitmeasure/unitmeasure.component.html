@@ -30,7 +30,7 @@
             <div class="container-input">
               <label for="equivalence">
                 *Equivalencia
-                <input type="text" formControlName="equivalence" name="equivalence" id="equivalence" required>
+                <input type="number" formControlName="equivalence" name="equivalence" id="equivalence" required>
               </label>
             </div>
           </div>
@@ -38,18 +38,9 @@
       </form>
     </div>
     <div class="container-buttons">
-      <div class="button">
-        <img class="save" src="assets/images/icons/save.png" alt="" (click)="save()">
-      </div>
-      <div class="button">
-        <img class="search" src="assets/images/icons/search.png" alt="">
-      </div>
-      <div class="button">
-        <img class="delete" src="assets/images/icons/delete.png" alt="" (click)="open()">
-      </div>
-      <div class="button">
-        <img class="list" src="assets/images/icons/list.png" alt="">
-      </div>
+      <button class="button" (click)="save()">Guardar</button>
+      <button class="button" [routerLink]="['/menu/produccion/tablaunidadmedidas']">Listado</button>
+      <button class="button" (click)="cancel()">Cancelar</button>
     </div>
   </div>
 </div>
