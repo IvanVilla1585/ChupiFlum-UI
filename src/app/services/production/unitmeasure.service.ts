@@ -14,8 +14,8 @@ export class UnitmeasureService {
     this.BASE_URL = 'http://localhost:8000/api';
   }
 
-  list(): Observable<Response>{
-    return this._httpService.get(`${this.BASE_URL}/unidadesmedidas/`);
+  list(url = ''): Observable<Response>{
+    return this._httpService.get(`${this.BASE_URL}/unidadesmedidas/${url}`);
   }
 
   listPage(url: string): Observable<Response>{

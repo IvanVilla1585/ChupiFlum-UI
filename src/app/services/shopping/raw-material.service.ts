@@ -13,8 +13,8 @@ export class RawMaterialService{
     this.BASE_URL = 'http://localhost:8000/api';
   }
 
-  list(): Observable<Response>{
-    return this._httpService.get(`${this.BASE_URL}/materiaprima/`);
+  list(url = ''): Observable<Response>{
+    return this._httpService.get(`${this.BASE_URL}/materiaprima/${url}`);
   }
 
   listPage(url: string): Observable<Response>{
