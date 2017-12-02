@@ -92,6 +92,10 @@ export class MenuComponent implements OnInit {
           {
             label: 'Producto Terminado',
             url: '/menu/produccion/productoterminado',
+          },
+          {
+            label: 'Procesos',
+            url: '/menu/produccion/procesos',
           }
         ],
         id: 'sub-production'
@@ -130,7 +134,6 @@ export class MenuComponent implements OnInit {
   }
 
   navigation(menu) {
-    debugger
     this._router.navigate([menu.url]);
   }
 
