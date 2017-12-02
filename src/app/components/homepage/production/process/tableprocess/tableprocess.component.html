@@ -57,14 +57,14 @@
           </div>
           <div class="t-body">
             <div class="">
-              <md-slide-toggle
+              <mat-slide-toggle
                   [color]="color"
                   [checked]="proce.estado"
                   (click)="changeStatus(proce)"
               >
                 <span [hidden]="!proce.estado">Activo</span>
                 <span [hidden]="proce.estado">Inactivo</span>
-              </md-slide-toggle>
+              </mat-slide-toggle>
             </div>
           </div>
         </div>
