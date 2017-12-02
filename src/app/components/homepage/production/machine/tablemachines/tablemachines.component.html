@@ -49,14 +49,14 @@
           </div>
           <div class="t-body">
             <div class="">
-              <md-slide-toggle
+              <mat-slide-toggle
                   [color]="color"
                   [checked]="machine.estado"
                   (click)="changeStatus(machine)"
               >
                 <span [hidden]="!machine.estado">Activo</span>
                 <span [hidden]="machine.estado">Inactivo</span>
-              </md-slide-toggle>
+              </mat-slide-toggle>
             </div>
           </div>
         </div>
