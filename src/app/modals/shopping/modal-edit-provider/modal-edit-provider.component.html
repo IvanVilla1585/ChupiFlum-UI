@@ -1,3 +1,89 @@
-<p>
-  modal-edit-provider works!
-</p>
+<div class="container-title-modal">
+  <h1 md-dialog-title class="title-modal">{{title}}</h1>
+</div>
+<div md-dialog-content class="container-modal">
+  <div class="container-error">
+    <p>{{errorMessage}}</p>
+  </div>
+  <div class="form-provider">
+    <form [formGroup]="providerForm">
+      <div class="container-inputs">
+        <div class="layout-input">
+          <input type="hidden" name="id" formControlName="id">
+          <div class="container-input">
+            <label for="nit">
+              *NIT
+              <input type="text" name="nit" id="nit" formControlName="nit">
+            </label>
+          </div>
+          <div class="container-input">
+            <label for="provider">
+              *Nombre de la Empresa
+              <input type="text" name="provider" id="provider" formControlName="provider">
+            </label>
+          </div>
+        </div>
+        <div class="layout-input">
+          <div class="container-input">
+            <label for="address">
+              *Dirección
+              <input type="text" name="address" id="address" formControlName="address">
+            </label>
+          </div>
+          <div class="container-input">
+            <label for="phone">
+              *Teléfono
+              <input type="text" name="phone" id="phone" formControlName="phone">
+            </label>
+          </div>
+        </div>
+        <div class="layout-input">
+          <div class="container-input">
+            <label for="fax">
+              Fax
+              <input type="text" name="fax" id="fax" formControlName="fax">
+            </label>
+          </div>
+          <div class="container-input">
+            <label for="email_provider">
+              Correo Empresa
+              <input type="email" name="email_provider" id="email_provider" formControlName="email_provider">
+            </label>
+          </div>
+        </div>
+        <div class="layout-input">
+          <div class="container-input">
+            <label for="name_contact">
+              *Nombres Contacto
+              <input type="text" name="name_contact" id="name_contact" formControlName="name_contact">
+            </label>
+          </div>
+          <div class="container-input">
+            <label for="lastname_contact">
+              Apellidos Contacto
+              <input type="text" name="lastname_contact" id="lastname_contact" formControlName="lastname_contact">
+            </label>
+          </div>
+        </div>
+        <div class="layout-input">
+          <div class="container-input">
+            <label for="phone_contact">
+              *Teléfono Contacto
+              <input type="text" name="phone_contact" id="phone_contact" formControlName="phone_contact">
+            </label>
+          </div>
+          <div class="container-input">
+            <label for="email_contact">
+              Correo Contacto
+              <input type="email" name="email_contact" id="email_contact" formControlName="email_contact">
+            </label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div md-dialog-actions class="container-buttons-modal">
+  <button md-button (click)="update()">Actualizar</button>
+  <button md-button (click)="closeModal()">Cancelar</button>
+</div>
