@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
-import {MdDialogRef} from "@angular/material";
+import {MatDialogRef} from "@angular/material";
 import {ProcessService} from "../../../services/production/process.service";
 
 @Component({
@@ -16,7 +16,7 @@ export class ModalEditProcessComponent implements OnInit {
   public title: string;
   public errorMessage: string;
   public data: any;
-  public dialogRef: MdDialogRef<ModalEditProcessComponent>;
+  public dialogRef: MatDialogRef<ModalEditProcessComponent>;
 
   constructor(
     private _processService: ProcessService,
@@ -46,7 +46,7 @@ export class ModalEditProcessComponent implements OnInit {
     this._processService.findAllMachines().subscribe(
       (res) => {
         let data = res.json();
-        this.machines = data.results;
+        this.machines = data;
       },
       (err) => {
         this.machines = [];
@@ -68,7 +68,8 @@ export class ModalEditProcessComponent implements OnInit {
   update(){
     let data = {
       process: {},
-      valid: false
+      valid: false,
+      status: 0
     };
     if (this.formProcess['_status'] === 'VALID') {
       let process = {
