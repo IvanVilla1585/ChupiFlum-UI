@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatSlideToggle} from '@angular/material';
-import { TablesupplierComponent } from './tablesupplier.component';
+import { TablerolesComponent } from './tableroles.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [TablesupplierComponent, MatSlideToggle]
+  declarations: [TablerolesComponent, MatSlideToggle]
 })
-export class TablesupplierModule { }
+export class TablerolesModule { }
