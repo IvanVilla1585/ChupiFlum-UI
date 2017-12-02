@@ -57,14 +57,14 @@
           </div>
           <div class="t-body">
             <div class="">
-              <md-slide-toggle
+              <mat-slide-toggle
                   [color]="color"
                   [checked]="unit.estado"
                   (click)="changeStatus(unit)"
               >
                 <span [hidden]="!unit.estado">Activo</span>
                 <span [hidden]="unit.estado">Inactivo</span>
-              </md-slide-toggle>
+              </mat-slide-toggle>
             </div>
           </div>
         </div>
@@ -76,14 +76,6 @@
         <button (click)="searchUnit()">Buscar</button>
       </div>
       <div class="panel-pager">
-        <app-pager
-            [totalPages]="totalPages"
-            [nextPage]="nextPage"
-            [previusPage]="previusPage"
-            [pages]="pages"
-            (updateDataPager)="updateData($event)"
-        >
-        </app-pager>
       </div>
     </div>
   </div>
