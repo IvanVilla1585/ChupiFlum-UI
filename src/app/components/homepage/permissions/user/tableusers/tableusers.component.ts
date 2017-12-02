@@ -83,11 +83,11 @@ export class TableusersComponent implements OnInit {
   }
 
   getUsers(){
-    this._userService.list()
+    this._userService.list(`?typelist=true`)
       .subscribe(
         (res) => {
           let data = res.json();
-          this.users = data;
+          this.users = data.results;
           this.nextPage = data.next;
           this.previusPage = data.previous;
           this.totalPages = data.count;
