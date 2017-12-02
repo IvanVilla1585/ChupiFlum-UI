@@ -1,0 +1,52 @@
+<div class="container-title-modal">
+  <h1 md-dialog-title class="title-modal">{{title}}</h1>
+</div>
+<div md-dialog-content class="container-modal">
+  <div class="container-error">
+    <p>{{errorMessage}}</p>
+  </div>
+  <div class="form-user">
+    <form [formGroup]="userForm">
+      <div class="container-inputs">
+        <div class="layout-input">
+          <div class="container-input">
+            <input type="hidden" name="id" formControlName="id">
+            <label for="first_name">
+              *Nombres
+              <input type="text" id="first_name" name="first_name" formControlName="first_name">
+            </label>
+          </div>
+          <div class="container-input">
+            <label for="last_name">
+              *Apellidos
+              <input type="text" id="last_name" name="last_name" formControlName="last_name">
+            </label>
+          </div>
+        </div>
+        <div class="layout-input">
+          <div class="container-input">
+            <label for="email">
+              *Correo Eléctronico
+              <input type="email" id="email" name="email" formControlName="email" (disable)="true">
+            </label>
+          </div>
+          <div class="container-input">
+            <label for="rol">
+              *Rol
+              <select name="rol" id="rol" formControlName="group">
+                <option value="">Seleccione un rol</option>
+                <option *ngFor="let rol of roles; let i = index" value="{{rol.id}}">
+                  {{rol.name}}
+                </option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div md-dialog-actions class="container-buttons-modal">
+  <button md-button (click)="update()">Actualizar</button>
+  <button md-button (click)="closeModal()">Cancelar</button>
+</div>
