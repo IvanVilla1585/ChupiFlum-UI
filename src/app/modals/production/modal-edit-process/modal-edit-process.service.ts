@@ -1,15 +1,15 @@
 import { Observable } from 'rxjs/Rx';
-import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
 import { Injectable } from '@angular/core';
 import {ModalEditProcessComponent} from "./modal-edit-process.component";
 
 @Injectable()
 export class ModalEditProcessService {
 
-  private dialogRef: MdDialogRef<ModalEditProcessComponent>;
+  private dialogRef: MatDialogRef<ModalEditProcessComponent>;
   private configModal: any;
 
-  constructor(private _mdDialog: MdDialog) {
+  constructor(private _mdDialog: MatDialog) {
     this.setConfigModal();
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MdDialogRef} from "@angular/material";
+import {MatDialogRef} from "@angular/material";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {ModalEditUnitService} from "./edit-unit-measure.service";
 
@@ -14,7 +14,7 @@ export class EditUnitMeasureComponent implements OnInit {
   public title: string;
   public errorMessage: string;
   public data: any;
-  public dialogRef: MdDialogRef<EditUnitMeasureComponent>;
+  public dialogRef: MatDialogRef<EditUnitMeasureComponent>;
 
   constructor(
     private fb: FormBuilder

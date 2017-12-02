@@ -31,6 +31,10 @@ export class HttpService {
     return this.request(url, RequestMethod.Put, body);
   }
 
+  patch(url:string, body:any) {
+    return this.request(url, RequestMethod.Patch, body);
+  }
+
   delete(url:string, body:any) {
     return this.request(url, RequestMethod.Delete, body);
   }

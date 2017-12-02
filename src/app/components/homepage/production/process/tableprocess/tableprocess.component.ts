@@ -2,17 +2,19 @@ import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {ProcessService} from "../../../../../services/production/process.service";
 import {ToastsManager} from "ng2-toastr";
 import {ModalEditProcessService} from "../../../../../modals/production/modal-edit-process/modal-edit-process.service";
+import {ExtracErrorMessages} from "../../../../../utils/ExtracMessages";
 
 @Component({
   selector: 'app-tableprocess',
   templateUrl: './tableprocess.component.html',
   styleUrls: ['./tableprocess.component.styl'],
-  providers: [ProcessService, ModalEditProcessService]
+  providers: [ProcessService, ModalEditProcessService, ExtracErrorMessages]
 })
 export class TableprocessComponent implements OnInit {
 
   public process: any [];
   public pages: any [];
+  public keys: any [];
   public search: string;
   public titleModal: string;
   public totalPages: number;
@@ -27,10 +29,12 @@ export class TableprocessComponent implements OnInit {
     private _processService: ProcessService,
     private _container: ViewContainerRef,
     private _toast: ToastsManager,
-    private _modalEditProcessService: ModalEditProcessService
+    private _modalEditProcessService: ModalEditProcessService,
+    private _extracErrorMessages: ExtracErrorMessages
   ){
     this.process = [];
     this.pages = [];
+    this.keys = [];
     this.search = '';
     this.color = '';
     this.titleModal = '';
@@ -48,6 +52,7 @@ export class TableprocessComponent implements OnInit {
     this.numberRegistre = 3;
     this.getMachines();
     this.setConfigModal();
+    this.keys = ['nombre', 'maquina', 'tiempo'];
   }
 
   openModal(data){
@@ -55,14 +60,27 @@ export class TableprocessComponent implements OnInit {
       .subscribe(
         (res: any) => {
           if (res.valid){
-            this._processService.update(res.process)
-              .subscribe(
-                (res: any) => {
-                  this.getMachines();
-                  let data = res.json();
-                  this._toast.success(`Se actualizó el proceso ${data.nombre}`, 'Procesos!');
-                }
-              );
+            this.updateProcess(res);
+          }
+        }
+      );
+  }
+
+  updateProcess(res){
+    this._processService.update(res.process)
+      .subscribe(
+        (res: any) => {
+          this.getMachines();
+          let data = res.json();
+          this._toast.success(`Se actualizó el proceso ${data.nombre}`, 'Procesos!');
+        },
+        (err) => {
+          if (err.status === 400){
+            let message = '';
+            message = this._extracErrorMessages.getMessages(err.json(), this.keys);
+            this._toast.info(message, 'Procesos!', {toastLife: 10000})
+          }else{
+            this._toast.error('Ocurrio un error al crear', 'Procesos!')
           }
         }
       );
@@ -83,7 +101,7 @@ export class TableprocessComponent implements OnInit {
     };
   }
   getMachines(){
-    this._processService.list()
+    this._processService.list(`?typelist=true`)
       .subscribe(
         (res) => {
           let data = res.json();
@@ -128,7 +146,7 @@ export class TableprocessComponent implements OnInit {
         .subscribe(
           (res) => {
             let data = res.json();
-            this.process = data.results;
+            this.process = data;
             this.nextPage = data.next;
             this.previusPage = data.previous;
             this.totalPages = data.count;
@@ -141,11 +159,11 @@ export class TableprocessComponent implements OnInit {
           }
         );
     }else{
-      this._processService.list()
+      this._processService.list(`?typelist=true`)
         .subscribe(
           (res) => {
             let data = res.json();
-            this.process = data.results;
+            this.process = data;
             this.nextPage = data.next;
             this.previusPage = data.previous;
             this.totalPages = data.count;

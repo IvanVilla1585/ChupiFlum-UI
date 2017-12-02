@@ -1,3 +1,91 @@
-<p>
-  tablesupplier works!
-</p>
+<div class="container-table-provider">
+  <div class="title-table-provider">
+    <h2>Proveedores</h2>
+  </div>
+  <div class="layout-table-provider">
+    <div class="layout-sort-by">
+      <div class="container-sort">
+        <select name="" id="">
+          <option value="">Sort by</option>
+        </select>
+      </div>
+      <div class="container-button">
+        <button [routerLink]="['/menu/compras/proveedores']">Nuevo Proveedor</button>
+      </div>
+    </div>
+    <div class="table">
+      <div class="table-header">
+        <div class="t-head">
+          <span>
+            Empresa
+          </span>
+        </div>
+        <div class="t-head">
+          <span>
+            Correo
+          </span>
+        </div>
+        <div class="t-head">
+          <span>
+            Contacto
+          </span>
+        </div>
+        <div class="t-head">
+          <span>
+            Telefono Contacto
+          </span>
+        </div>
+        <div class="t-head">
+          <span>
+            Estado
+          </span>
+        </div>
+      </div>
+      <div class="table-body">
+        <div class="row-unit" *ngFor="let provider of providers; let i = index">
+          <div class="t-body" (click)="openModal(provider)">
+            <span>{{provider.empresa}}</span>
+          </div>
+          <div class="t-body">
+            <span>{{provider.correo_empresa}}</span>
+          </div>
+          <div class="t-body">
+            <span>{{provider.nombre_contacto}} </span>
+          </div>
+          <div class="t-body">
+            <span>{{provider.telefono_contacto}}</span>
+          </div>
+          <div class="t-body">
+            <div class="">
+              <mat-slide-toggle
+                  [color]="color"
+                  [checked]="provider.estado"
+                  (click)="changeStatus(provider)"
+              >
+                <span [hidden]="!provider.estado">Activo</span>
+                <span [hidden]="provider.estado">Inactivo</span>
+              </mat-slide-toggle>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="layout-search-pager">
+      <div class="panel-search">
+        <input [(ngModel)]="search" type="text" placeholder="buscar proveedor">
+        <button (click)="searcMaterial()">Buscar</button>
+      </div>
+      <div class="panel-pager">
+        <app-pager
+            [totalPages]="totalPages"
+            [nextPage]="nextPage"
+            [previusPage]="previusPage"
+            [pages]="pages"
+            (updateDataPager)="updateData($event)"
+        >
+        </app-pager>
+      </div>
+    </div>
+  </div>
+</div>
+

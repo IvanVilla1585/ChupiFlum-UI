@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
-import {MdDialogRef} from "@angular/material";
+import {MatDialogRef} from "@angular/material";
 import {RawMaterialService} from "../../../services/shopping/raw-material.service";
 
 @Component({
@@ -17,7 +17,7 @@ export class ModalEditRawMaterialComponent implements OnInit {
   public title: string;
   public errorMessage: string;
   public data: any;
-  public dialogRef: MdDialogRef<ModalEditRawMaterialComponent>;
+  public dialogRef: MatDialogRef<ModalEditRawMaterialComponent>;
 
   constructor(
     private _rawMaterialService: RawMaterialService,
@@ -51,7 +51,7 @@ export class ModalEditRawMaterialComponent implements OnInit {
     this._rawMaterialService.getUnits().subscribe(
       (res) => {
         let data = res.json();
-        this.units = data.results;
+        this.units = data;
       },
       (err) => {
         this.units = [];
@@ -64,7 +64,7 @@ export class ModalEditRawMaterialComponent implements OnInit {
     this._rawMaterialService.getCategories().subscribe(
       (res) => {
         let data = res.json();
-        this.categories = data.results;
+        this.categories = data;
       },
       (err) => {
         this.categories = [];
@@ -89,7 +89,8 @@ export class ModalEditRawMaterialComponent implements OnInit {
     let data = {
       material: {},
       error: {},
-      valid: false
+      valid: false,
+      status: 0
     };
     if (this.formMaterial['_status'] === 'VALID') {
       let material = {
@@ -111,6 +112,7 @@ export class ModalEditRawMaterialComponent implements OnInit {
             this.dialogRef.close(data);
           },
           (err) => {
+            data.status = err.status;
             data.error = err.json();
             data.valid = false;
             this.dialogRef.close(data);
@@ -123,8 +125,9 @@ export class ModalEditRawMaterialComponent implements OnInit {
 
   closeModal(){
     let data = {
-      process: {},
-      valid: false
+      material: {},
+      valid: false,
+      status: 1
     };
     this.dialogRef.close(data);
   }

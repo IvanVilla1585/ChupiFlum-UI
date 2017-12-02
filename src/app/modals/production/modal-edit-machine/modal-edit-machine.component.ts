@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Validators, FormBuilder, FormGroup} from "@angular/forms";
 import {MachineService} from "../../../services/production/machine.service";
-import {MdDialogRef} from "@angular/material";
+import {MatDialogRef} from "@angular/material";
 
 @Component({
   selector: 'app-modal-edit-machine',
@@ -16,7 +16,7 @@ export class ModalEditMachineComponent implements OnInit {
   public title: string;
   public errorMessage: string;
   public data: any;
-  public dialogRef: MdDialogRef<ModalEditMachineComponent>;
+  public dialogRef: MatDialogRef<ModalEditMachineComponent>;
 
   constructor(
     private _machineService: MachineService,
@@ -46,7 +46,7 @@ export class ModalEditMachineComponent implements OnInit {
     this._machineService.getUnits().subscribe(
       (res) => {
         let data = res.json();
-        this.units = data.results;
+        this.units = data;
       },
       (err) => {
         this.units = [];

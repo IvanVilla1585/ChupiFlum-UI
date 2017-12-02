@@ -1,48 +1,47 @@
 <div class="container-form-order">
   <div class="layout-form-order">
     <div class="title-form-order">
-      <h2>Registro Producto Terminado</h2>
+      <h2>Registro Compras a Proveedores</h2>
     </div>
     <div class="form-order">
-      <form action="">
+      <form [formGroup]="orderForm">
         <div class="container-inputs">
           <div class="layout-input">
             <div class="container-input">
               <label for="date">
                 *Fecha Pedido
-                <input type="text" name="date" id="date">
+                <input formControlName="date" type="text" name="date" id="date" readonly>
               </label>
             </div>
             <div class="container-input">
-              <label for="date">
-                *Proveedor
-                <input type="text" name="date" id="date">
+              <label for="supplier">
+                *Nombre Empresa
+                <p-autoComplete
+                  formControlName="supplier"
+                  name="supplier"
+                  id="supplier"
+                  [suggestions]="suppliers"
+                  (completeMethod)="searchSupplier($event)"
+                  (onSelect)="selectDataSupplier($event)"
+                  field="empresa"
+                  [inputStyleClass]="productClassStyle"
+                  [readonly]="readonly"
+                >
+                </p-autoComplete>
               </label>
             </div>
             <div class="container-input">
-              <label for="date">
-                *Dirección
-                <input type="text" name="date" id="date">
+              <label for="nit">
+                *Nit
+                <input type="text" formControlName="nit" name="nit" id="nit" readonly>
               </label>
             </div>
           </div>
           <div class="layout-input">
             <div class="container-input">
-              <label for="">
-                *Cantidad a Elaborar
-                <input type="text">
-              </label>
-            </div>
-            <div class="container-input">
-              <label for="">
-                *Costo Producción
-                <input type="text">
-              </label>
-            </div>
-            <div class="container-input">
-              <label for="">
-                *Precio Venta
-                <input type="text">
+              <label for="address">
+                *Dirección
+                <input type="text" formControlName="address" name="address" id="address" readonly>
               </label>
             </div>
           </div>
@@ -60,7 +59,7 @@
                     <span>Cantidad</span>
                   </div>
                   <div class="title">
-                    <span>Valor Unit.</span>
+                    <span>Valor</span>
                   </div>
                   <div class="title actions">
                     <span></span>
@@ -68,38 +67,72 @@
                 </div>
                 <div class="body-table">
                   <div class="layout-body" id="layout-body-order">
-                    <div class="row-order">
-                      <div class="t-body raw-material">
-                        <div class="input">
-                          <input type="text" placeholder="Materia Prima">
+                    <div class="table-body">
+                      <div class="row-unit" *ngFor="let data of products; let i = index">
+                        <div class="t-body">
+                          <span>{{data.materia.nombre}}</span>
                         </div>
-                      </div>
-                      <div class="t-body unit-measure">
-                        <div class="input">
-                          <select name="unit" id="">
-                            <option value="">Seleccione una unidad</option>
-                          </select>
+                        <div class="t-body">
+                          <span>{{data.unit.nombre}}</span>
                         </div>
-                      </div>
-                      <div class="t-body quantity">
-                        <div class="input">
-                          <input type="text" placeholder="Cantidad">
+                        <div class="t-body">
+                          <span>{{data.quantity}}</span>
                         </div>
-                      </div>
-                      <div class="t-body price">
-                        <div class="input">
-                          <input type="text" placeholder="Valor Unit.">
+                        <div class="t-body">
+                          <span>{{data.value}}</span>
                         </div>
-                      </div>
-                      <div class="t-body actions">
-                        <figure class="container-icons" (click)="addRow()">
-                          <img src="assets/images/icons/add_icon.png" alt="">
-                        </figure>
-                        <figure class="container-icons" (click)="deleteRow()">
-                          <img src="assets/images/icons/delete_icon.png" alt="">
-                        </figure>
+                        <div class="t-body actions">
+                          <figure class="container-icons" (click)="deleteRow(i)">
+                            <img src="assets/images/icons/delete_icon.png" alt="">
+                          </figure>
+                        </div>
                       </div>
                     </div>
+
+                  </div>
+
+                </div>
+                <div class="row-order">
+                  <div class="t-body raw-material">
+                    <div class="input">
+                      <p-autoComplete
+                        [formControl]="product"
+                        [suggestions]="options"
+                        (completeMethod)="search($event)"
+                        (onSelect)="selectData($event)"
+                        field="nombre"
+                        [placeholder]="productPlaceholder"
+                        [inputStyleClass]="productClassStyle"
+                      >
+                      </p-autoComplete>
+                    </div>
+                  </div>
+                  <div class="t-body unit-measure">
+                    <div class="input">
+                      <select name="unit-product" id="unit-product" [formControl]="unit">
+                        <option value="">Seleccione una unidad</option>
+                        <option *ngFor="let unit of units; let i = index"
+                                value="{{unit.id}}"
+                        >
+                          {{unit.nombre}}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="t-body quantity">
+                    <div class="input">
+                      <input type="text" placeholder="Cantidad" [formControl]="quantity">
+                    </div>
+                  </div>
+                  <div class="t-body price">
+                    <div class="input">
+                      <input type="text" placeholder="Valor" [formControl]="value">
+                    </div>
+                  </div>
+                  <div class="t-body actions">
+                    <figure class="container-icons" (click)="addRow()">
+                      <img src="assets/images/icons/add_icon.png" alt="">
+                    </figure>
                   </div>
                 </div>
               </div>
@@ -109,18 +142,9 @@
       </form>
     </div>
     <div class="container-buttons">
-      <div class="button">
-        <img class="save" src="assets/images/icons/save.png" alt="">
-      </div>
-      <div class="button">
-        <img class="search" src="assets/images/icons/search.png" alt="">
-      </div>
-      <div class="button">
-        <img class="delete" src="assets/images/icons/delete.png" alt="">
-      </div>
-      <div class="button">
-        <img class="list" src="assets/images/icons/list.png" alt="">
-      </div>
+      <button class="button" (click)="save()">Guardar</button>
+      <button class="button" [routerLink]="['/menu/compras/tablapedidos']">Listado</button>
+      <button class="button">Cancelar</button>
     </div>
   </div>
 </div>

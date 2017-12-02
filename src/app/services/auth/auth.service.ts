@@ -15,7 +15,7 @@ export class AuthService {
   private client_secret: string;
   private grant_type: string;
   private BASE_URL: string;
-  
+
   constructor(private _http: Http, private _cookieService: CookieService) {
 
     this.BASE_URL = 'http://localhost:8000/api';
@@ -25,8 +25,8 @@ export class AuthService {
     });
     this.options = new RequestOptions({ headers: this.headers });
     this.grant_type = 'password';
-    this.client_id = 'sUtZcpjFIwRfKeZnhkHchGOVaBlAYhzfaIZwMC4n';
-    this.client_secret = 'Ba4D0LNi2dp0cyvB9ABIVDpSZfDpGOyCP9r62bTHfMWlfIq9gFmXD53mnRGF0Hg7v5baUkuU3nBwWOcr5USZuE0a40NTU2KGGEd5hrS371iHInnqKUd3SI36flZWEJ8L';
+    this.client_id = 'A66SlRWmw61sCWng1vzvCisSYypttAW7xSSPAkje';
+    this.client_secret = 'cXxmiQ56ZOUogILovYUToSL9vRXLLpuTVx0GnnL9KPlJ6GgkR7cm5l3zuZxTFa1uCvEMPLqS46E1WDmf5h4ii8C3E27zo3m0lpVyzMJZ0NCEjkzK7b18Dd8kL6yUh4Zt';
   }
 
   login(data): Observable<any> {

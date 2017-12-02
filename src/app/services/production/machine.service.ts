@@ -13,8 +13,8 @@ export class MachineService{
     this.BASE_URL = 'http://localhost:8000/api';
   }
 
-  list(): Observable<Response>{
-    return this._httpService.get(`${this.BASE_URL}/maquinas/`);
+  list(url = ''): Observable<Response>{
+    return this._httpService.get(`${this.BASE_URL}/maquinas/${url}`);
   }
 
   listPage(url: string): Observable<Response>{

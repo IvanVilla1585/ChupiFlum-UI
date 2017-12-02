@@ -4,47 +4,38 @@
       <h2>Registro Usuarios</h2>
     </div>
     <div class="form-roles">
-      <form action="">
+      <form [formGroup]="userForm">
         <div class="container-inputs">
           <div class="layout-input">
             <div class="container-input">
-              <label for="">
-                Primer Nombre
-                <input type="text">
+              <label for="first_name">
+                *Nombres
+                <input type="text" id="first_name" name="first_name" formControlName="first_name">
               </label>
             </div>
             <div class="container-input">
-              <label for="">
-                Segundo Nombre
-                <input type="text">
-              </label>
-            </div>
-          </div>
-          <div class="layout-input">
-            <div class="container-input">
-              <label for="">
-                Primer Apellido
-                <input type="text">
-              </label>
-            </div>
-            <div class="container-input">
-              <label for="">
-                Segundo apellido
-                <input type="text">
+              <label for="last_name">
+                *Apellidos
+                <input type="text" id="last_name" name="last_name" formControlName="last_name">
               </label>
             </div>
           </div>
           <div class="layout-input">
             <div class="container-input">
-              <label for="">
-                Correo Eléctronico
-                <input type="email">
+              <label for="email">
+                *Correo Eléctronico
+                <input type="email" id="email" name="email" formControlName="email">
               </label>
             </div>
             <div class="container-input">
-              <label for="">
-                Rol
-                <input type="text">
+              <label for="rol">
+                *Rol
+                <select name="rol" id="rol" formControlName="group">
+                  <option value="">Seleccione un rol</option>
+                  <option *ngFor="let rol of roles; let i = index" value="{{rol.id}}">
+                    {{rol.name}}
+                  </option>
+                </select>
               </label>
             </div>
           </div>
@@ -52,18 +43,9 @@
       </form>
     </div>
     <div class="container-buttons">
-      <div class="button">
-        <img class="save" src="assets/images/icons/save.png" alt="">
-      </div>
-      <div class="button">
-        <img class="search" src="assets/images/icons/search.png" alt="">
-      </div>
-      <div class="button">
-        <img class="delete" src="assets/images/icons/delete.png" alt="">
-      </div>
-      <div class="button">
-        <img class="list" src="assets/images/icons/list.png" alt="">
-      </div>
+      <button class="button" (click)="save()">Guardar</button>
+      <button class="button" [routerLink]="['/menu/permisos/tablausuarios']">Listado</button>
+      <button class="button">Cancelar</button>
     </div>
   </div>
 </div>

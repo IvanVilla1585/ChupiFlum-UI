@@ -16,15 +16,15 @@ export class RolesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getPermissions();
+    //this.getPermissions();
   }
 
-  getPermissions(){
+  /*getPermissions(){
     this.rolesService
       .getPermissions()
       .then(res => {
         this.permissions = res;
       });
-  }
+  }*/
 
 }

@@ -1,15 +1,15 @@
 import { Observable } from 'rxjs/Rx';
-import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
 import { Injectable } from '@angular/core';
 import {ModalEditRawMaterialComponent} from "./modal-edit-raw-material.component";
 
 @Injectable()
 export class ModalEditRawMaterialService {
 
-  private dialogRef: MdDialogRef<ModalEditRawMaterialComponent>;
+  private dialogRef: MatDialogRef<ModalEditRawMaterialComponent>;
   private configModal: any;
 
-  constructor(private _mdDialog: MdDialog) {
+  constructor(private _mdDialog: MatDialog) {
     this.setConfigModal();
   }
 

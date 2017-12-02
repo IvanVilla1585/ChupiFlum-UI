@@ -5,6 +5,8 @@ import { RawmaterialComponent } from './rawmaterial/rawmaterial/rawmaterial.comp
 import { OrderComponent } from './orders/order/order.component';
 import { KardexorderComponent } from './kardexorders/kardexorder/kardexorder.component';
 import {TablerawmaterialComponent} from "./rawmaterial/tablerawmaterial/tablerawmaterial.component";
+import {TablesupplierComponent} from "./supplier/tablesupplier/tablesupplier.component";
+import {TableorderComponent} from './orders/tableorder/tableorder.component';
 
 export const routesShopping = {
   path: 'compras',
@@ -13,6 +15,10 @@ export const routesShopping = {
     {
       path: 'proveedores',
       component: SupplierComponent
+    },
+    {
+      path: 'tablaproveedores',
+      component: TablesupplierComponent
     },
     {
       path: 'materiaprima',
@@ -27,6 +33,10 @@ export const routesShopping = {
       component: OrderComponent
     },
     {
+      path: 'tablapedidos',
+      component: TableorderComponent
+    },
+    {
       path: 'entradamateriaprima',
       component: KardexorderComponent
     }
@@ -39,5 +49,7 @@ export const routesShoppingComponents = [
   RawmaterialComponent,
   OrderComponent,
   KardexorderComponent,
-  TablerawmaterialComponent
+  TablerawmaterialComponent,
+  TablesupplierComponent,
+  TableorderComponent
 ];

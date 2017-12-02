@@ -2,17 +2,19 @@ import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {RawMaterialService} from "../../../../../services/shopping/raw-material.service";
 import {ToastsManager} from "ng2-toastr";
 import {ModalEditRawMaterialService} from "../../../../../modals/shopping/modal-edit-raw-material/modal-edit-raw-material.service";
+import {ExtracErrorMessages} from "../../../../../utils/ExtracMessages";
 
 @Component({
   selector: 'app-tablerawmaterial',
   templateUrl: './tablerawmaterial.component.html',
   styleUrls: ['./tablerawmaterial.component.styl'],
-  providers: [RawMaterialService, ModalEditRawMaterialService]
+  providers: [RawMaterialService, ModalEditRawMaterialService, ExtracErrorMessages]
 })
 export class TablerawmaterialComponent implements OnInit {
 
   public rawMaterials: any[];
   public pages: any [];
+  public keys: any [];
   public search: string;
   public titleModal: string;
   public totalPages: number;
@@ -27,10 +29,12 @@ export class TablerawmaterialComponent implements OnInit {
     private _rawMaterialService: RawMaterialService,
     private _container: ViewContainerRef,
     private _toast: ToastsManager,
-    private _modalEditRawMaterialService: ModalEditRawMaterialService
+    private _modalEditRawMaterialService: ModalEditRawMaterialService,
+    private _extracErrorMessages: ExtracErrorMessages
   ){
     this.rawMaterials = [];
     this.pages = [];
+    this.keys = [];
     this.search = '';
     this.color = '';
     this.titleModal = '';
@@ -47,6 +51,7 @@ export class TablerawmaterialComponent implements OnInit {
     this.titleModal = 'Editar Materia Prima';
     this.numberRegistre = 3;
     this.getMaterials();
+    this.keys = ['nombre', 'cantidad', 'categoria', 'stock']
   }
 
   openModal(data){
@@ -57,17 +62,25 @@ export class TablerawmaterialComponent implements OnInit {
             this.getMaterials();
             this._toast.success(`Se actualizó la materia prima ${data.nombre}`, 'Materia Prima!');
           }else{
-            this._toast.error('Se produjo un error al actualizar', 'Materia Prima!');
+            let message = '';
+            if (res.status === 400){
+              message = this._extracErrorMessages.getMessages(res.error, this.keys);
+              this._toast.info(message, 'Materia Prima!', {toastLife: 10000})
+            }else if (res.status !== 1 && res.status !== 400){
+              this._toast.error('Ocurrio un error al actualizar', 'Materia Prima!')
+            }
+            console.log(res.error)
           }
         }
       );
   }
 
   getMaterials(){
-    this._rawMaterialService.list()
+    this._rawMaterialService.list(`?typelist=true`)
       .subscribe(
         (res) => {
           let data = res.json();
+          debugger
           this.rawMaterials = data.results;
           this.nextPage = data.next;
           this.previusPage = data.previous;
@@ -109,7 +122,7 @@ export class TablerawmaterialComponent implements OnInit {
         .subscribe(
           (res) => {
             let data = res.json();
-            this.rawMaterials = data.results;
+            this.rawMaterials = data;
             this.nextPage = data.next;
             this.previusPage = data.previous;
             this.totalPages = data.count;
@@ -122,7 +135,7 @@ export class TablerawmaterialComponent implements OnInit {
           }
         );
     }else{
-      this._rawMaterialService.list()
+      this._rawMaterialService.list(`?typelist=true`)
         .subscribe(
           (res) => {
             let data = res.json();

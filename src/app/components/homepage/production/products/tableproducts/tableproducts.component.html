@@ -1,3 +1,91 @@
-<p>
-  tableproducts works!
-</p>
+<div class="container-table-product">
+  <div class="title-table-product">
+    <h2>Producto Terminado</h2>
+  </div>
+  <div class="layout-table-product">
+    <div class="layout-sort-by">
+      <div class="container-sort">
+        <select name="" id="">
+          <option value="">Sort by</option>
+        </select>
+      </div>
+      <div class="container-button">
+        <button [routerLink]="['/menu/produccion/productoterminado']">Nuevo producto</button>
+      </div>
+    </div>
+    <div class="table">
+      <div class="table-header">
+        <div class="t-head">
+          <span>
+            Nombre
+          </span>
+        </div>
+        <div class="t-head">
+          <span>
+            Presentación
+          </span>
+        </div>
+        <div class="t-head">
+          <span>
+            Inventario
+          </span>
+        </div>
+        <div class="t-head">
+          <span>
+            Stock
+          </span>
+        </div>
+        <div class="t-head">
+          <span>
+            Estado
+          </span>
+        </div>
+      </div>
+      <div class="table-body">
+        <div class="row-unit" *ngFor="let product of products; let i = index">
+          <div class="t-body" (click)="productDetail(product)">
+            <span>{{product.nombre}}</span>
+          </div>
+          <div class="t-body">
+            <span>{{product.presentacion.nombre}}</span>
+          </div>
+          <div class="t-body">
+            <span>{{product.cantidad}} {{product.unidad_medida.code}}</span>
+          </div>
+          <div class="t-body">
+            <span>{{product.stock}}</span>
+          </div>
+          <div class="t-body">
+            <div class="">
+              <mat-slide-toggle
+                [color]="color"
+                [checked]="product.estado"
+                (click)="changeStatus(product)"
+              >
+                <span [hidden]="!product.estado">Activo</span>
+                <span [hidden]="product.estado">Inactivo</span>
+              </mat-slide-toggle>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="layout-search-pager">
+      <div class="panel-search">
+        <input [(ngModel)]="search" type="text" placeholder="buscar materia">
+        <button (click)="searcMaterial()">Buscar</button>
+      </div>
+      <div class="panel-pager">
+        <!--<app-pager-->
+          <!--[totalPages]="totalPages"-->
+          <!--[nextPage]="nextPage"-->
+          <!--[previusPage]="previusPage"-->
+          <!--[pages]="pages"-->
+          <!--(updateDataPager)="updateData($event)"-->
+        <!--&gt;-->
+        <!--</app-pager>-->
+      </div>
+    </div>
+  </div>
+</div>
+

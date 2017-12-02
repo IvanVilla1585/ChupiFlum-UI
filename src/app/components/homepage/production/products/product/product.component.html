@@ -17,51 +17,61 @@
       </div>
     </div>
     <div class="form-product" [hidden]="currentTab != 'product'">
-      <form action="">
+      <form [formGroup]="formProduct">
         <div class="container-inputs">
           <div class="layout-input">
             <div class="container-input">
-              <label for="">
+              <label for="name">
                 *Nombre
-                <input type="text">
+                <input type="text" formControlName="name" id="name" name="name">
               </label>
             </div>
             <div class="container-input">
-              <label for="">
+              <label for="description">
                 Descripción
-                <input type="text">
+                <input type="text" formControlName="description" id="description" name="description">
               </label>
             </div>
           </div>
           <div class="layout-input">
             <div class="container-input">
-              <label for="unit-product">
+              <label for="unit">
                 *Unidad de Medida
-                <select name="unit-product" id="unit-product">
+                <select name="unit-product" id="unit" formControlName="unit">
                   <option value="">Seleccione una unidad</option>
+                  <option *ngFor="let unit of units; let i = index"
+                          value="{{unit.id}}"
+                  >
+                    {{unit.nombre}}
+                  </option>
                 </select>
               </label>
             </div>
             <div class="container-input">
-              <label for="unit-product">
+              <label for="category">
                 *Categoria
-                <select name="category" id="unit-product">
+                <select name="category" id="category" formControlName="category">
                   <option value="">Seleccione una categoria</option>
+                  <option *ngFor="let category of categories; let i = index"
+                          value="{{category.id}}"
+                  >
+                    {{category.nombre}}
+                  </option>
                 </select>
               </label>
             </div>
           </div>
           <div class="layout-input">
             <div class="container-input">
-              <label for="">
+              <label for="quantity">
                 Cantidad en Inventario
-                <input type="text">
+                <input type="text" formControlName="quantity" id="quantity" name="quantity">
               </label>
             </div>
             <div class="container-input">
-              <label for="">
+              <label for="stock">
                 *Stock
-                <input type="text">
+                <input type="text" formControlName="stock" id="stock" name="stock">
               </label>
             </div>
           </div>
@@ -69,38 +79,49 @@
       </form>
     </div>
     <div class="form-recipe" [hidden]="currentTab != 'recipe'">
-      <form action="">
+      <form [formGroup]="formFormula">
         <div class="container-inputs">
           <div class="layout-input">
             <div class="container-input">
-              <label for="">
+              <label for="presentation">
                 *Presentación del Producto
-                <select name="presentation" id="presentation">
+                <select name="presentation" id="presentation" formControlName="presentation">
                   <option value="">Seleccione una presentación</option>
+                  <option *ngFor="let presentation of presentations; let i = index"
+                          value="{{presentation.id}}"
+                  >
+                    {{presentation.nombre}}
+                  </option>
                 </select>
               </label>
             </div>
-          </div>
-          <div class="layout-input">
             <div class="container-input">
-              <label for="">
+              <label for="quantity">
                 *Cantidad a Elaborar
-                <input type="text">
-              </label>
-            </div>
-            <div class="container-input">
-              <label for="">
-                *Costo Producción
-                <input type="text">
-              </label>
-            </div>
-            <div class="container-input">
-              <label for="">
-                *Precio Venta
-                <input type="text">
+                <input type="text" formControlName="quantity" id="quantity-recipe" name="quantity">
               </label>
             </div>
           </div>
+          <!--<div class="layout-input">-->
+            <!--<div class="container-input">-->
+              <!--<label for="quantity">-->
+                <!--*Cantidad a Elaborar-->
+                <!--<input type="text" formControlName="quantity" id="quantity-recipe" name="quantity">-->
+              <!--</label>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;<div class="container-input">&ndash;&gt;-->
+              <!--&lt;!&ndash;<label for="">&ndash;&gt;-->
+                <!--&lt;!&ndash;*Costo Producción&ndash;&gt;-->
+                <!--&lt;!&ndash;<input type="text">&ndash;&gt;-->
+              <!--&lt;!&ndash;</label>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="container-input">&ndash;&gt;-->
+              <!--&lt;!&ndash;<label for="">&ndash;&gt;-->
+                <!--&lt;!&ndash;*Precio Venta&ndash;&gt;-->
+                <!--&lt;!&ndash;<input type="text">&ndash;&gt;-->
+              <!--&lt;!&ndash;</label>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+          <!--</div>-->
           <div class="layout-input">
             <div class="layout-table-recipe">
               <div class="title-table">
@@ -123,30 +144,57 @@
                 </div>
                 <div class="body-table">
                   <div class="layout-body">
+                    <div class="table-body">
+                      <div class="row-unit" *ngFor="let data of formulas; let i = index">
+                        <div class="t-body">
+                          <span>{{data.materia.nombre}}</span>
+                        </div>
+                        <div class="t-body">
+                          <span>{{data.unit.nombre}}</span>
+                        </div>
+                        <div class="t-body">
+                          <span>{{data.quantity}}</span>
+                        </div>
+                        <div class="t-body actions">
+                          <figure class="container-icons" (click)="deleteRow(data)">
+                            <img src="assets/images/icons/delete_icon.png" alt="">
+                          </figure>
+                        </div>
+                      </div>
+                    </div>
                     <div class="row-recipe">
                       <div class="t-body raw-material">
                         <div class="input">
-                          <input type="text" placeholder="Materia Prima">
+                          <select name="product" id="product" [(ngModel)]="product" [ngModelOptions]="{standalone: true}">
+                            <option value="">Seleccione una materia prima</option>
+                            <option *ngFor="let product of products; let i = index"
+                                    value="{{product.id}}"
+                            >
+                              {{product.nombre}}
+                            </option>
+                          </select>
                         </div>
                       </div>
                       <div class="t-body unit-measure">
                         <div class="input">
-                          <select name="unit" id="">
+                          <select name="unit-product" id="uni-productt" [(ngModel)]="unit" [ngModelOptions]="{standalone: true}">
                             <option value="">Seleccione una unidad</option>
+                            <option *ngFor="let unit of units; let i = index"
+                                    value="{{unit.id}}"
+                            >
+                              {{unit.nombre}}
+                            </option>
                           </select>
                         </div>
                       </div>
                       <div class="t-body quantity">
                         <div class="input">
-                          <input type="text" placeholder="Cantidad">
+                          <input type="text" placeholder="Cantidad" [(ngModel)]="quantity" [ngModelOptions]="{standalone: true}">
                         </div>
                       </div>
                       <div class="t-body actions">
                         <figure class="container-icons" (click)="addRow()">
                           <img src="assets/images/icons/add_icon.png" alt="">
-                        </figure>
-                        <figure class="container-icons" (click)="deleteRow()">
-                          <img src="assets/images/icons/delete_icon.png" alt="">
                         </figure>
                       </div>
                     </div>
@@ -159,13 +207,13 @@
       </form>
     </div>
     <div class="form-process" [hidden]="currentTab != 'process'">
-      <form action="">
+      <form [formGroup]="formProcess">
         <div class="container-inputs">
           <div class="layout-input">
             <div class="container-input">
               <label for="">
                 Tiempo de Producción
-                <input type="text">
+                <input type="text" formControlName="time" id="time" name="time">
               </label>
             </div>
           </div>
@@ -174,9 +222,9 @@
               <div class="title-process">
                 <span>procesos por asignar</span>
               </div>
-              <div class="process-unselected">
-                <div class="process">
-                  <span>Crear Usuarios</span>
+              <div class="process-unselected" *ngFor="let proce of process; let i = index" (click)="selectProcess(proce)">
+                <div class="process" >
+                  <span>{{proce.nombre}}</span>
                 </div>
               </div>
             </div>
@@ -184,9 +232,9 @@
               <div class="title-process">
                 <span>procesos asignados</span>
               </div>
-              <div class="process-selected">
+              <div class="process-selected" *ngFor="let proc of processSelected; let i = index" (click)="unselectProcess(proc)">
                 <div class="process">
-                  <span>Crear Proveedor</span>
+                  <span>{{proc.nombre}}</span>
                 </div>
               </div>
             </div>
@@ -195,18 +243,9 @@
       </form>
     </div>
     <div class="container-buttons">
-      <div class="button">
-        <img class="save" src="assets/images/icons/save.png" alt="">
-      </div>
-      <div class="button">
-        <img class="search" src="assets/images/icons/search.png" alt="">
-      </div>
-      <div class="button">
-        <img class="delete" src="assets/images/icons/delete.png" alt="">
-      </div>
-      <div class="button">
-        <img class="list" src="assets/images/icons/list.png" alt="">
-      </div>
+      <button class="button" (click)="save()">Guardar</button>
+      <button class="button" [routerLink]="['/menu/produccion/tablaproductosterminados']">Listado</button>
+      <button class="button" (click)="cancel()">Cancelar</button>
     </div>
   </div>
 </div>

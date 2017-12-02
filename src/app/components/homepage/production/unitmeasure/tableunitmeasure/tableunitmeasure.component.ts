@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {UnitmeasureService} from "../../../../../services/production/unitmeasure.service";
 import {ToastsManager} from "ng2-toastr";
-import {MdDialogRef} from "@angular/material";
+import {MatDialogRef} from "@angular/material";
 import {EditUnitMeasureComponent} from "../../../../../modals/production/edit-unit-measure/edit-unit-measure.component";
 import {ModalEditUnitService} from "../../../../../modals/production/edit-unit-measure/edit-unit-measure.service";
 
@@ -24,7 +24,7 @@ export class TableunitmeasureComponent implements OnInit {
   public numberRegistre: number;
   public numberPages: number;
   public configModal: any;
-  public dialogRef: MdDialogRef<EditUnitMeasureComponent>;
+  public dialogRef: MatDialogRef<EditUnitMeasureComponent>;
 
   constructor(
     private _unitmeasureService: UnitmeasureService,
@@ -87,9 +87,10 @@ export class TableunitmeasureComponent implements OnInit {
   }
 
   getUnits(){
-    this._unitmeasureService.list()
+    this._unitmeasureService.list('?typelist=true')
       .subscribe(
         (res) => {
+          debugger
           let data = res.json();
           this.units = data.results;
           this.nextPage = data.next;
@@ -132,7 +133,7 @@ export class TableunitmeasureComponent implements OnInit {
         .subscribe(
           (res) => {
             let data = res.json();
-            this.units = data.results;
+            this.units = data;
             this.nextPage = data.next;
             this.previusPage = data.previous;
             this.totalPages = data.count;
@@ -145,11 +146,11 @@ export class TableunitmeasureComponent implements OnInit {
           }
         );
     }else{
-      this._unitmeasureService.list()
+      this._unitmeasureService.list(`?typelist=true`)
         .subscribe(
           (res) => {
             let data = res.json();
-            this.units = data.results;
+            this.units = data;
             this.nextPage = data.next;
             this.previusPage = data.previous;
             this.totalPages = data.count;

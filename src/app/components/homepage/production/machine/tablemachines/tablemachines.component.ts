@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {MachineService} from "../../../../../services/production/machine.service";
 import {ToastsManager} from "ng2-toastr";
+import {MatSlideToggle} from "@angular/material";
 import {ModalEditMachineService} from "../../../../../modals/production/modal-edit-machine/modal-edit-machine.service";
 
 @Component({
@@ -54,7 +55,7 @@ export class TablemachinesComponent implements OnInit {
     this._machineService.list().subscribe(
       (res) => {
         let data = res.json();
-        this.machines = data.results;
+        this.machines = data;
         this.nextPage = data.next;
         this.previusPage = data.previous;
         this.totalPages = data.count;
@@ -95,7 +96,7 @@ export class TablemachinesComponent implements OnInit {
         .subscribe(
           (res) => {
             let data = res.json();
-            this.machines = data.results;
+            this.machines = data;
             this.nextPage = data.next;
             this.previusPage = data.previous;
             this.totalPages = data.count;
@@ -108,7 +109,7 @@ export class TablemachinesComponent implements OnInit {
           }
         );
     }else{
-      this._machineService.list()
+      this._machineService.list(`?typelist=true`)
         .subscribe(
           (res) => {
             let data = res.json();

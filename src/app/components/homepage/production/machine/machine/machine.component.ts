@@ -2,31 +2,36 @@ import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {ToastsManager} from "ng2-toastr";
 import {MachineService} from "../../../../../services/production/machine.service";
+import {ExtracErrorMessages} from "../../../../../utils/ExtracMessages";
 
 @Component({
   selector: 'app-machine',
   templateUrl: 'machine.component.html',
   styleUrls: ['machine.component.styl'],
-  providers: [MachineService]
+  providers: [MachineService, ExtracErrorMessages]
 })
 export class MachineComponent implements OnInit {
 
   machineForm: FormGroup;
+  keys: any [];
   units: any [];
 
   constructor(
     private _machineService: MachineService,
     private _container: ViewContainerRef,
     private fb: FormBuilder,
-    private _toast: ToastsManager
+    private _toast: ToastsManager,
+    private _extracErrorMessages: ExtracErrorMessages
   ) {
+    this.keys = [];
     this.units = [];
     this._toast.setRootViewContainerRef(_container);
   }
 
   ngOnInit() {
     this.createForm();
-    this.getUnits();
+    this.getUnits()
+    this.keys = ['nombre', 'capacidad', 'unidad_medida'];
   }
 
   createForm() {
@@ -34,16 +39,18 @@ export class MachineComponent implements OnInit {
       name: ['', Validators.required ],
       description: '',
       quantity: ['', Validators.required ],
-      unit: ['', Validators.required ],
-      time: ['', Validators.required ]
+      unit: ['', Validators.required ]
     });
   }
 
   getUnits(){
+          debugger
     this._machineService.getUnits().subscribe(
       (res) => {
+
+          debugger
         let data = res.json();
-        this.units = data.results;
+        this.units = data;
       },
       (err) => {
         this.units = [];
@@ -58,8 +65,7 @@ export class MachineComponent implements OnInit {
         nombre: this.machineForm.get('name').value,
         descripcion: this.machineForm.get('description').value,
         capacidad: this.machineForm.get('quantity').value,
-        unidad_medida: parseInt(this.machineForm.get('unit').value),
-        tiempo: this.machineForm.get('time').value
+        unidad_medida: parseInt(this.machineForm.get('unit').value)
       };
       this._machineService.save(machine).subscribe(
         (res) => {
@@ -68,8 +74,14 @@ export class MachineComponent implements OnInit {
           this._toast.success(`La máquina ${data.nombre} fue guardada`, 'Máquina!');
         },
         (err) => {
-          this.machineForm.reset();
-          console.log(err)
+          if (err.status === 400){
+            let message = '';
+            message = this._extracErrorMessages.getMessages(err.json(), this.keys);
+            this._toast.info(message, 'Máquina!', {toastLife: 10000})
+          }else{
+            this._toast.error('Ocurrio un error al crear', 'Máquina!')
+          }
+          console.log(err.json())
         }
       );
     }else{

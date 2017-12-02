@@ -1,15 +1,15 @@
 import { Observable } from 'rxjs/Rx';
-import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
 import { Injectable } from '@angular/core';
 import {EditUnitMeasureComponent} from "./edit-unit-measure.component";
 
 @Injectable()
 export class ModalEditUnitService {
 
-  private dialogRef: MdDialogRef<EditUnitMeasureComponent>;
+  private dialogRef: MatDialogRef<EditUnitMeasureComponent>;
   private configModal: any;
 
-  constructor(private _mdDialog: MdDialog) {
+  constructor(private _mdDialog: MatDialog) {
     this.setConfigModal();
   }
 

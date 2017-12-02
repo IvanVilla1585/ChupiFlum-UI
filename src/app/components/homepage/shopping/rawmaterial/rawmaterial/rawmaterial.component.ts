@@ -2,26 +2,34 @@ import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {ToastsManager} from "ng2-toastr";
 import {RawMaterialService} from "../../../../../services/shopping/raw-material.service";
+import {ExtracErrorMessages} from "../../../../../utils/ExtracMessages";
+
 
 @Component({
   selector: 'app-rawmaterial',
   templateUrl: './rawmaterial.component.html',
   styleUrls: ['./rawmaterial.component.styl'],
-  providers: [RawMaterialService]
+  providers: [RawMaterialService, ExtracErrorMessages]
 })
 export class RawmaterialComponent implements OnInit {
 
   formMaterial: FormGroup;
   units: any [];
   categories: any [];
+  keys: any [];
+  message: string;
 
   constructor(
     private _rawMaterialService: RawMaterialService,
     private _container: ViewContainerRef,
     private fb: FormBuilder,
-    private _toast: ToastsManager
+    private _toast: ToastsManager,
+    private _extracErrorMessages: ExtracErrorMessages
   ) {
     this.units = [];
+    this.categories = [];
+    this.keys = [];
+    this.message = '';
     this._toast.setRootViewContainerRef(_container);
   }
 
@@ -29,6 +37,7 @@ export class RawmaterialComponent implements OnInit {
     this.createForm();
     this.getUnits();
     this.getCategories();
+    this.keys = ['nombre', 'cantidad', 'categoria', 'stock']
   }
 
   createForm() {
@@ -46,7 +55,7 @@ export class RawmaterialComponent implements OnInit {
     this._rawMaterialService.getUnits().subscribe(
       (res) => {
         let data = res.json();
-        this.units = data.results;
+        this.units = data;
       },
       (err) => {
         this.units = [];
@@ -58,8 +67,9 @@ export class RawmaterialComponent implements OnInit {
   getCategories(){
     this._rawMaterialService.getCategories().subscribe(
       (res) => {
+        debugger
         let data = res.json();
-        this.categories = data.results;
+        this.categories = data;
       },
       (err) => {
         this.categories = [];
@@ -90,7 +100,12 @@ export class RawmaterialComponent implements OnInit {
           this._toast.success(`La materia prima ${data.nombre} fue guardada`, 'Materia Prima!');
         },
         (err) => {
-          this.formMaterial.reset();
+          if (err.status === 400){
+            this.message = this._extracErrorMessages.getMessages(err.json(), this.keys);
+            this._toast.info(this.message, 'Materia Prima!', {toastLife: 10000})
+          }else{
+            this._toast.error('Ocurrio un error al crear', 'Materia Prima!')
+          }
           console.log(err)
         }
       );
