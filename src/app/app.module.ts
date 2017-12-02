@@ -12,7 +12,7 @@ import { LoginRoutingModule, routesLoginComponents } from './components/login/lo
 import { HomepageRoutingModule, routesHomeComponents } from './components/homepage/homepage-routing.module';
 import {HomepageModule} from "./components/homepage/homepage.module";
 import { PagerComponent } from './common/pager/pager.component';
-import {MdDialogModule, MdSlideToggleModule} from "@angular/material";
+import {MatDialogModule, MatSlideToggleModule, MatAutocompleteModule, MatOptionModule} from "@angular/material";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {EditUnitMeasureComponent} from "./modals/production/edit-unit-measure/edit-unit-measure.component";
 import { ModalEditMachineComponent } from './modals/production/modal-edit-machine/modal-edit-machine.component';
@@ -22,6 +22,10 @@ import { ModalEditRawMaterialComponent } from './modals/shopping/modal-edit-raw-
 import { UserPasswordCreateComponent } from './components/password/user-password-create/user-password-create.component';
 import { PasswordComponent } from './components/password/password.component';
 import {routesPasswordComponents, PasswordRoutingModule} from "./components/password/password-routing.module";
+import { ModalEditProviderComponent } from './modals/shopping/modal-edit-provider/modal-edit-provider.component';
+import { ModalEditUserComponent } from './modals/permissions/modal-edit-user/modal-edit-user.component';
+import {AutoCompleteModule} from 'primeng/components/autocomplete/autocomplete';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +37,9 @@ import {routesPasswordComponents, PasswordRoutingModule} from "./components/pass
     PagerComponent,
     ModalEditMachineComponent,
     ModalEditProcessComponent,
-    ModalEditRawMaterialComponent
+    ModalEditRawMaterialComponent,
+    ModalEditProviderComponent,
+    ModalEditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -47,14 +53,19 @@ import {routesPasswordComponents, PasswordRoutingModule} from "./components/pass
     ToastModule.forRoot(),
     HomepageModule,
     BrowserAnimationsModule,
-    MdDialogModule,
-    MdSlideToggleModule
+    MatDialogModule,
+    MatSlideToggleModule,
+    MatAutocompleteModule,
+    MatOptionModule,
+    AutoCompleteModule
   ],
   entryComponents: [
     EditUnitMeasureComponent,
     ModalEditMachineComponent,
     ModalEditProcessComponent,
-    ModalEditRawMaterialComponent
+    ModalEditRawMaterialComponent,
+    ModalEditProviderComponent,
+    ModalEditUserComponent
   ],
   providers: [
     CookieService,
