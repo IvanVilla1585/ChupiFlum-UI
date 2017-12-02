@@ -116,6 +116,31 @@
                     .layout-body
                       max-height 250px
                       overflow-y auto
+
+                      .table-body
+                        .row-unit
+                          display-flex()
+                          border-bottom 1px solid $background_menu
+                          .t-body
+                            width calc(90% / 3)
+                            padding 14*$px 7*$px
+                            text-align center
+                            &:first-child
+                              cursor pointer
+
+                          .actions
+                            display-flex()
+                            align-items(center)
+                            justify(space-around)
+                            width percent(0.1)
+                            .container-icons
+                              margin 0
+                              width 15px
+                              height 15px
+                              cursor pointer
+                              img
+                                width percent(1)
+                                height percent(1)
                       .row-recipe
                         display-flex()
                         border-bottom 1px solid $background_menu
@@ -196,25 +221,6 @@
       padding-left 0
 
       .button
-        width 50px
-        height 50px
-        text-align center
-        position relative
-        background $background_menu
-        border-radius percent(0.5)
+        buttons()
         &:nth-child(n - 3)
           margin-right 1rem
-
-        img
-          position absolute
-          top 12px
-          left 12px
-        .save, .search
-          width 26px
-          height 26px
-        .delete, .list
-          width 22px
-          height 22px
-        .delete, .list
-          left 15px
-          top 14px
