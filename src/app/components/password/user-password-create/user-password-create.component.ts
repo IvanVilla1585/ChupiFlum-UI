@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from '@angular/router';
 import {ToastsManager} from "ng2-toastr";
 import {UserService} from "../../../services/permissions/user.service";
 import {ActivatedRoute} from "@angular/router";
@@ -21,7 +22,8 @@ export class UserPasswordCreateComponent implements OnInit {
     private _container: ViewContainerRef,
     private _toast: ToastsManager,
     private _userService: UserService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _router: Router,
   )
   {
     this.token = '';
@@ -68,6 +70,9 @@ export class UserPasswordCreateComponent implements OnInit {
         .subscribe(
           res => {
             let data = res.json();
+            this._toast.info(`Se activo la cuenta del usuario ${data.first_name} ${data.last_name}`, 'Usuarios');
+            this.userPasswordForm.reset();
+            this._router.navigate(['/login']);
           },
           err => {
             this._toast.error('Token invalido', 'Usuarios!');
