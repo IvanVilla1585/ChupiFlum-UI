@@ -2,16 +2,18 @@ import {Component, OnInit, ViewContainerRef, ViewChild} from '@angular/core';
 import { UnitmeasureService } from '../../../../../services/production/unitmeasure.service';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {ExtracErrorMessages} from '../../../../../utils/ExtracMessages';
 
 @Component({
   selector: 'app-unitmeasure',
   templateUrl: './unitmeasure.component.html',
   styleUrls: ['./unitmeasure.component.styl'],
-  providers: [UnitmeasureService]
+  providers: [UnitmeasureService, ExtracErrorMessages]
 })
 export class UnitmeasureComponent implements OnInit {
 
   public name: string;
+  public keys: any [];
   public description: string;
   public code: string;
   public equivalence: string;
@@ -22,8 +24,10 @@ export class UnitmeasureComponent implements OnInit {
     private _unitmeasureService: UnitmeasureService,
     private _container: ViewContainerRef,
     private fb: FormBuilder,
-    private _toast: ToastsManager
+    private _toast: ToastsManager,
+    private _extracErrorMessages: ExtracErrorMessages
   ){
+    this.keys = [];
     this.name = '';
     this.description = '';
     this.code = '';
@@ -33,7 +37,8 @@ export class UnitmeasureComponent implements OnInit {
   }
 
   ngOnInit() {
-      this.createForm();
+    this.createForm();
+    this.keys = ['nombre', 'equivalencia', 'code']
   }
 
   createForm() {
@@ -65,6 +70,13 @@ export class UnitmeasureComponent implements OnInit {
             console.log(res.json())
           },
           (err) => {
+            if (err.status === 400){
+              let message = '';
+              message = this._extracErrorMessages.getMessages(err.json(), this.keys);
+              this._toast.info(message, 'Unidad de Medida!', {toastLife: 10000})
+            }else{
+              this._toast.error('Ocurrio un error al crear', 'Unidad de Medida!')
+            }
             console.log(err.json())
           }
         );
@@ -74,12 +86,8 @@ export class UnitmeasureComponent implements OnInit {
 
   }
 
-  clearForm(){
-    this.name = '';
-    this.description = '';
-    this.code = '';
-    this.equivalence = '';
-
+  cancel(){
+    this.unitForm.reset();
   }
 
 }
